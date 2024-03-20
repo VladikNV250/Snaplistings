@@ -2,32 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.links > *::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    opacity: 0;
+    background: #083c48;
+    transition-property: width, opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 500ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.links > *:hover::after { width: 100%; opacity: 1;}
+
+.main_btn:hover button {
+    width: 10rem;
+    height: 2.75rem;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.triangle-1 {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 2px solid transparent;
+    border-top: 6px solid #fff;
+    background: transparent;
+    top: 2px;
+    left: 115px;
+    transform: rotate(-15deg);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.triangle-2 {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 2px solid transparent;
+    border-top: 6px solid #fff;
+    background: transparent;
+    bottom: 1px;
+    left: 30px;
+    transform: rotate(215deg);
 }
+
+.main_btn:hover span .triangle-1,
+.main_btn:hover span .triangle-2 {
+    border-top: 6px solid #083c48;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
