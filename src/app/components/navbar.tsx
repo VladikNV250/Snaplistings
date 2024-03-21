@@ -5,7 +5,7 @@ import MainButton from "./UI/mainbutton";
 
 const Navbar = () => {
     return (
-        <nav className="fixed flex justify-between items-center w-full h-18 px-12 border-b-[1px] border-darkslategrey-500 z-20">
+        <nav className="fixed flex justify-between items-center w-full h-18 px-12 border-b-[1px] border-darkslategrey-500 z-30 bg-white">
             <Image
               src={logo.src}
               width={235}

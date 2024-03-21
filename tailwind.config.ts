@@ -9,11 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       fontSize: {
+        '5.5xl': '3.625rem', 
         '7.5xl': '5.065rem',
       },
       spacing: {
         '18': '4.5rem',
         '38': '9.5rem',
+        '58': '14.25rem',
         'full-w': '106%',
         'full-h': '120%',
       },
@@ -31,6 +33,11 @@ const config: Config = {
         tango: {
           500: '#f47f20',
         }
+      },
+      backgroundImage: {
+        'main-pattern': 'url("./../../public/bg.png")',
+        'card-pattern': 'linear-gradient(135deg, rgba(245, 245, 245, 1) 20%, rgba(8, 60, 72, 0.2) 100%)',
+        'card-pattern-none': 'linear-gradient(135deg, rgba(245, 245, 245, 1) 20%, rgba(245, 245, 245, 1) 100%)'
       }
     },
   },
