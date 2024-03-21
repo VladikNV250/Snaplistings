@@ -15,8 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={OpenSauceSans.className}>
+      <body className={OpenSauceSans.className} cz-shortcut-listen="true">
         <Navbar />
+
         {children}
       </body>
     </html>
