@@ -14,7 +14,10 @@ const config: Config = {
       },
       spacing: {
         '18': '4.5rem',
+        '30': '7.5rem',
+        '33': '8.25rem',
         '38': '9.5rem',
+        '50': '12.4rem',
         '58': '14.25rem',
         'full-w': '106%',
         'full-h': '120%',
@@ -24,11 +27,12 @@ const config: Config = {
           600: '#083c48',
           500: '#0c5c6e',
         },
-        steelgray: {
+        steelgrey: {
           500: '#191a24',
         },
         frost: {
-          500: '#f4f8e7',
+          100: '#f4f8e7',
+          200: '#EDF4D9',
         },
         tango: {
           500: '#f47f20',
