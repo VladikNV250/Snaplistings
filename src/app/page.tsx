@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import MainButton from "./components/UI/mainbutton";
 import VideoPlayer from "./components/UI/videoplayer";
@@ -6,22 +7,125 @@ import Cards from "./components/cards";
 import Form from "./components/form";
 import BrandSlider from "./components/UI/brandslider";
 import Footer from "./components/footer";
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import clsx from "clsx";
+
+type Options = 'Discount' | 'Increase' | 'Simple Percentage' | 'Increase/Decrease' | 'Percentage of A from B';
 
 export default function Home() {
+  
+  const [progress, setProgress] = useState(0);
+  const incRef = useRef(false);
+  const title1Ref = useRef(false);
+  const title2Ref = useRef(false);
+  const formTitleRef = useRef(false);
+  const backgroundRef = useRef(false);
+  const videoRef = useRef(false);
+
+  const [titleRef, titleInView, titleEntry] = useInView({
+    threshold: 0.5,
+  })
+  const [buttonRef, buttonInView, butttonEntry] = useInView({
+    threshold: 0.1,
+  })
+
+  
+
+  function percentageCalculator(a: number, b: number, option: Options): number {
+      switch (option) {
+        case 'Discount': // a - b% = x
+          return a - Math.round((a * b) / 100);
+        case 'Increase': // a + b% = x
+          return a + Math.round((a * b) / 100);
+        case 'Simple Percentage': // a * b% = x
+          return Math.round((a * b) / 100);
+        case 'Increase/Decrease': // a -> b = x%
+          return Math.round((b * 100) / a);
+        case 'Percentage of A from B': // a <- b = x%
+          return Math.round((a * 100) / b);
+        default: return 0;
+      }
+  }
+
+  function scrollHandler(scrollHeight: number) {
+    const currentProgress = percentageCalculator(window.scrollY, scrollHeight, 'Percentage of A from B')
+    setProgress(currentProgress);
+    if (currentProgress >= 0 && currentProgress <= 5) {
+      incRef.current = true;
+      title1Ref.current = true;
+    }
+    if (currentProgress >= 0 && currentProgress <= 19) 
+      videoRef.current = true;
+    if (currentProgress >= 30 && currentProgress <= 40) 
+      title2Ref.current = true;
+    if (currentProgress >= 55 && currentProgress <= 65) 
+      formTitleRef.current = true;
+    if (currentProgress >= 75 && currentProgress <= 93) 
+      backgroundRef.current = true;
+    
+  }
+
+
+  useEffect(() => {
+    const scrollHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+    const browserHeight = document.documentElement.clientHeight;
+    scrollHandler(scrollHeight - browserHeight);
+    window.addEventListener('scroll', () => scrollHandler(scrollHeight - browserHeight))
+    return () => window.removeEventListener('scroll', () => scrollHandler(scrollHeight - browserHeight));
+  }, [])
+
   return (
     <main className="relative flex flex-col items-center pt-32 bg-white overflow-x-hidden">
-      <div className="line fixed w-1/4 h-0.5 top-0 bg-tango-500 shadow shadow-tango-500 z-40"></div>
+      <div className={`line fixed h-0.5 top-0 bg-tango-500 shadow shadow-tango-500 z-40 transition-all`} style={{width: `${progress}%`}}></div>
       <section className="w-full h-full flex flex-col items-center">
         <Image
           src={Images.INC}
           width={165}
           height={47}
           alt="INC.500"
+          className={clsx(
+            "relative transition-all duration-500 delay-100",
+            !incRef.current && 'opacity-0 top-5',
+            incRef.current && 'opacity-100 top-0',
+          )}
         />
-        <h1 className="mt-5 text-7.5xl text-center font-bold bg-gradient-to-b from-darkslategrey-500 to-darkslategrey-600 inline-block text-transparent bg-clip-text">The Most Effective <br /> Marketing In Real Estate</h1>
-        <p className="text-xl text-center mt-2">We build and execute effective marketing & sales solutions that deliver real ROI</p>
-        <MainButton className="mt-16" >
-          <p className="text-white font-bold text-base whitespace-nowrap z-20 cursor-pointer">Get Connected</p>
+        <h1 
+          className={clsx(
+            "mt-5 text-7.5xl text-center font-bold",
+            "bg-gradient-to-b from-darkslategrey-500 to-darkslategrey-600",
+            "inline-block text-transparent bg-clip-text",
+            "relative transition-all duration-700 delay-100",
+            !title1Ref.current && 'opacity-0 top-5',
+            title1Ref.current && 'opacity-100 top-0',
+          )}
+        >
+          The Most Effective <br /> Marketing In Real Estate
+        </h1>
+        <p 
+          className={clsx(
+            "text-xl text-center mt-2 relative",
+            "transition-all duration-700 delay-100",
+            !buttonInView && 'opacity-0 top-5',
+            buttonInView && 'opacity-100 top-0',
+          )}
+        >
+          We build and execute effective marketing & sales solutions that deliver real ROI
+        </p>
+        <MainButton 
+          className={clsx(
+            "mt-16 transition-all duration-700 delay-100",
+            !buttonInView && 'opacity-0 top-5',
+            buttonInView && 'opacity-100 top-0',
+          )} 
+        >
+          <p ref={buttonRef} className="text-white font-bold text-base whitespace-nowrap z-20 cursor-pointer">
+            Get Connected
+          </p>
         </MainButton>
         <div className="w-full h-[768px] mt-16 relative overflow-hidden flex justify-center items-center">
           <Image
@@ -31,18 +135,51 @@ export default function Home() {
             alt=""
             className="absolute h-full w-full bg-neutral-100"
           />
-          <VideoPlayer width={1184} height={668} src={'/teaser.mp4'} className="mt-24 z-20 border-[1px] border-black rounded-xl" />
+          <VideoPlayer 
+            width={1184} 
+            height={668} 
+            src={'/teaser.mp4'} 
+            className={clsx(
+              "mt-24 z-20 border-[1px] border-black rounded-xl",
+              'relative transition-all duration-500 delay-[600ms]',
+              !videoRef.current && 'opacity-0 top-5',
+              videoRef.current && 'opacity-100 top-0',
+            )} 
+          />
         </div>
       </section>
       <section className="bg-neutral-100 w-full pt-24 flex flex-col items-center pb-16">
-        <h2 className="mt-5 text-5.5xl text-center font-bold bg-gradient-to-b from-darkslategrey-500 to-darkslategrey-600 inline-block text-transparent bg-clip-text">Problem Solving & Delivering Results</h2>
+        <h2 
+          ref={titleRef} 
+          className={clsx(
+            "relative text-5.5xl text-center font-bold mt-5",
+            "bg-gradient-to-b from-darkslategrey-500 to-darkslategrey-600",
+            "inline-block text-transparent bg-clip-text",
+            "transition-all duration-300",
+            !titleInView && 'opacity-0 top-5',
+            titleInView && 'opacity-100 top-0',
+          )}
+        >
+            Problem Solving & Delivering Results
+        </h2>
         <Cards />
         <MainButton className="mt-18">
           <p className="text-white font-bold text-base whitespace-nowrap z-20 cursor-pointer">View Case Studies</p>
         </MainButton>
       </section>
-      <section className="bg-white w-full pt-32 pb-32 flex flex-col items-center">
-        <h2 className="mt-5 text-5.5xl text-center font-bold bg-gradient-to-b from-darkslategrey-500 to-darkslategrey-600 inline-block text-transparent bg-clip-text">Traditional Real Estate <br /> Marketing Doesn't Work</h2>
+      <section className="bg-white w-full pt-24 pb-32 flex flex-col items-center">
+        <h2 
+          className={clsx(
+            "mt-5 text-5.5xl text-center font-bold",
+            "bg-gradient-to-t from-darkslategrey-500 to-darkslategrey-600",
+            "inline-block text-transparent bg-clip-text",
+            "relative transition-all duration-300 delay-100",
+            !title2Ref.current && 'opacity-0 top-5',
+            title2Ref.current && 'opacity-100 top-0',
+          )}
+        >
+          Traditional Real Estate <br /> Marketing Doesn't Work
+        </h2>
         <section className="relative flex justify-between items-center space-x-40 mt-40">
           <div className="text space-y-4 z-10">
             <h4 className="text-3xl font-bold bg-gradient-to-t from-darkslategrey-500 to-darkslategrey-600 inline-block text-transparent bg-clip-text">
@@ -114,9 +251,24 @@ export default function Home() {
           />
         </section>
       </section>
-      <Form />
-      <section className="relative w-full flex flex-col items-center pt-48 bg-steelgrey-500 px-96 pb-64 space-y-24 overflow-x-hidden">
-        <h2 className="text-5.5xl text-center font-bold text-frost-100">Who We Work With</h2>
+      <Form titileVisibe={formTitleRef.current}/>
+      <section 
+        className={clsx(
+          "relative w-full flex flex-col items-center pt-48 px-96 pb-64 space-y-24 overflow-x-hidden",
+          'transition-color duration-700 delay-100',
+          !backgroundRef.current && 'bg-white',
+          backgroundRef.current && 'bg-steelgrey-500',
+        )}
+      >
+        <h2 className={clsx(
+            "text-5.5xl text-center font-bold text-frost-100",
+            "relative transition-all duration-700",
+            !backgroundRef.current && 'opacity-0 top-5',
+            backgroundRef.current && 'opacity-100 top-0',
+          )}
+        >
+          Who We Work With
+        </h2>
         <div className="w-full bg-frost-100 p-0.5 pb-3 rounded-2xl z-10">
           <div className="w-full bg-steelgrey-500 flex flex-col items-center px-4 space-y-4 pt-4 pb-8 rounded-t-[14px] rounded-b-2xl">
             <div className="quote w-full flex justify-start items-center">

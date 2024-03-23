@@ -1,11 +1,39 @@
+"use client"
 import Image from "next/image";
 import logo from "./../../../public/snaplistings.png";
 import Link from "next/link";
 import MainButton from "./UI/mainbutton";
+import { useEffect, useRef, useState } from "react";
+import clsx from "clsx";
 
 const Navbar = () => {
+    const [visible, setVisible] = useState(true);
+    const oldScroll = useRef(0);
+
+    function scrollHandler() {
+        if (window.scrollY > oldScroll.current) 
+            setVisible(false);
+        else 
+            setVisible(true);
+
+        oldScroll.current = window.scrollY;
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', scrollHandler)
+        return () => window.removeEventListener('scroll', scrollHandler)
+    },)
+
     return (
-        <nav className="fixed flex justify-between items-center w-full h-18 px-12 border-b-[1px] border-darkslategrey-500 z-30 bg-white">
+        <nav 
+            className={clsx(
+                "fixed w-full h-18 px-12 z-30",
+                "flex justify-between items-center",
+                "bg-white/85 backdrop-blur border-b-[1px] border-darkslategrey-500",
+                "transition-all duration-500 transform",
+                !visible && '-translate-y-18'
+            )}
+        >
             <Image
               src={logo.src}
               width={235}

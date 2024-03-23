@@ -1,6 +1,12 @@
+import { MutableRefObject } from "react";
 import MainButton from "./UI/mainbutton";
+import clsx from "clsx";
 
-const Form = () => {
+interface Props {
+    titileVisibe: boolean,
+}
+
+const Form = ({ titileVisibe }: Props) => {
     return (
         <section className="relative overflow-hidden w-full flex flex-col items-center pt-32 pb-64 bg-neutral-100">
             <div className="background absolute w-full h-full top-0 left-0">
@@ -17,7 +23,16 @@ const Form = () => {
                     <path className="" fill="#f47f20" d="M24.5,-1.6C24.5,12.5,12.3,25,-0.5,25C-13.3,25,-26.6,12.5,-26.6,-1.6C-26.6,-15.8,-13.3,-31.6,-0.5,-31.6C12.3,-31.6,24.5,-15.8,24.5,-1.6Z" width="100%" height="100%" transform="translate(50 50)" strokeWidth="0"></path>              
                 </svg>
             </div>
-            <h2 className="text-5.5xl text-center font-bold bg-gradient-to-b from-darkslategrey-500 to-darkslategrey-600 inline-block text-transparent bg-clip-text">Hi! Let's solve your problem together</h2>
+            <h2 className={clsx(
+                "text-5.5xl text-center font-bold",
+                "bg-gradient-to-b from-darkslategrey-500 to-darkslategrey-600",
+                "inline-block text-transparent bg-clip-text",
+                'relative transition-all duration-300 delay-100',
+                !titileVisibe && 'opacity-0 top-5',
+                titileVisibe && 'opacity-100 top-0',
+            )}>
+                Hi! Let's solve your problem together
+            </h2>
             <p className="text-xl text-stone-900 mt-4">Request a case study in your industry and chat with our team!</p>
             <form action="" className="z-10 mt-18 space-y-6">
                 <div className="relative flex flex-col">
