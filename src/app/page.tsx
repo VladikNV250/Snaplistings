@@ -14,7 +14,7 @@ import clsx from "clsx";
 type Options = 'Discount' | 'Increase' | 'Simple Percentage' | 'Increase/Decrease' | 'Percentage of A from B';
 
 export default function Home() {
-  
+  const [videoProgress, setVideoProgress] = useState(0);
   const [progress, setProgress] = useState(0);
   const incRef = useRef(false);
   const title1Ref = useRef(false);
@@ -23,6 +23,7 @@ export default function Home() {
   const backgroundRef = useRef(false);
   const videoRef = useRef(false);
 
+  
   const [titleRef, titleInView, titleEntry] = useInView({
     threshold: 0.5,
   })
@@ -30,7 +31,6 @@ export default function Home() {
     threshold: 0.1,
   })
 
-  
 
   function percentageCalculator(a: number, b: number, option: Options): number {
       switch (option) {
@@ -55,8 +55,10 @@ export default function Home() {
       incRef.current = true;
       title1Ref.current = true;
     }
-    if (currentProgress >= 0 && currentProgress <= 19) 
+    if (currentProgress >= 0 && currentProgress <= 18) {
       videoRef.current = true;
+      setVideoProgress(+((window.scrollY * 100) / 551).toFixed(6));
+    } 
     if (currentProgress >= 30 && currentProgress <= 40) 
       title2Ref.current = true;
     if (currentProgress >= 55 && currentProgress <= 65) 
@@ -66,6 +68,17 @@ export default function Home() {
     
   }
 
+  function videoTransformHandler() {
+    let percent = 142 - ((142 * videoProgress) / 100);
+    if (percent <= 0) return 0;
+    else return percent;
+  }
+  function videoScaleHandler() {
+    let percent = 52 + ((52 * videoProgress) / 100);
+    if (percent <= 57) return 57;
+    if (percent >= 100) return 100;
+    else return percent
+  }
 
   useEffect(() => {
     const scrollHeight = Math.max(
@@ -96,7 +109,7 @@ export default function Home() {
         />
         <h1 
           className={clsx(
-            "mt-5 text-7.5xl text-center font-bold",
+            "mt-5 text-7.5xl/tight text-center font-bold",
             "bg-gradient-to-b from-darkslategrey-500 to-darkslategrey-600",
             "inline-block text-transparent bg-clip-text",
             "relative transition-all duration-700 delay-100",
@@ -127,25 +140,30 @@ export default function Home() {
             Get Connected
           </p>
         </MainButton>
-        <div className="w-full h-[768px] mt-16 relative overflow-hidden flex justify-center items-center">
+        <div className="w-full h-[768px] mt-16 relative overflow-hidden flex justify-center pt-20 px-52">
           <Image
             src={Images.BACKGROUND1}
             width={9999}
             height={768}
             alt=""
-            className="absolute h-full w-full bg-neutral-100"
+            className="absolute h-full w-screen bg-neutral-100"
           />
-          <VideoPlayer 
-            width={1184} 
-            height={668} 
-            src={'/teaser.mp4'} 
-            className={clsx(
-              "mt-24 z-20 border-[1px] border-black rounded-xl",
-              'relative transition-all duration-500 delay-[600ms]',
-              !videoRef.current && 'opacity-0 top-5',
-              videoRef.current && 'opacity-100 top-0',
-            )} 
-          />
+          <div 
+            className={`w-[1184px] h-[668px] flex justify-center transition-all`} 
+            style={{transform: `scale(${(videoScaleHandler() / 100).toFixed(6)}) translateY(-${videoTransformHandler().toFixed(6)}px)`}}
+          >
+            <VideoPlayer
+              src={'/teaser.mp4'} 
+              className={clsx(
+                `z-20 w-full h-full object-cover`,
+                `border-[1px] border-black rounded-xl`,
+                `relative transition-all duration-500 delay-[600ms] `,
+                !videoRef.current && 'opacity-0 top-5',
+                videoRef.current && 'opacity-100 top-0'
+              )} 
+            />
+          </div>
+
         </div>
       </section>
       <section className="bg-neutral-100 w-full pt-24 flex flex-col items-center pb-16">

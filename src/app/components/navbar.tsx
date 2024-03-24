@@ -29,7 +29,7 @@ const Navbar = () => {
             className={clsx(
                 "fixed w-full h-18 px-12 z-30",
                 "flex justify-between items-center",
-                "bg-white/85 backdrop-blur border-b-[1px] border-darkslategrey-500",
+                "bg-white/85 backdrop-blur border-b-[1px] border-darkslategrey-500/60",
                 "transition-all duration-500 transform",
                 !visible && '-translate-y-18'
             )}
@@ -40,7 +40,7 @@ const Navbar = () => {
               height={26}
               alt="SNAPLISTINGS" 
             />
-            <div className="links absolute left-1/2 transform -translate-x-1/2 h-full flex items-center space-x-14">
+            <div className="links absolute left-1/2 transform -translate-x-1/2 h-full flex items-center space-x-12">
                 <Link href={'/about'} className="relative text-base text-darkslategrey-600">About</Link>
                 <Link href={'/study'} className="relative text-base text-darkslategrey-600">Case Studies</Link>
                 <Link href={'/press'} className="relative text-base text-darkslategrey-600">Press</Link>
