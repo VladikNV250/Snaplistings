@@ -34,8 +34,8 @@ const Form = ({ titileVisibe }: Props) => {
                 Hi! Let's solve your problem together
             </h2>
             <p className="text-xl text-stone-900 mt-4">Request a case study in your industry and chat with our team!</p>
-            <form action="" className="z-10 mt-18 space-y-6">
-                <div className="relative flex flex-col">
+            <form action="" className="flex flex-col items-center z-10 mt-18 space-y-6">
+                <div className="w-full relative flex flex-col">
                     <h5 className="text-base text-darkslategrey-600 font-medium">What is your industry?</h5>
                     <div className="flex justify-between items-center space-x-4 mt-1">
                         <div className="checkbox group w-50 h-14 flex justify-center items-center space-x-1.5 bg-white border-2 border-darkslategrey-600 rounded-full cursor-pointer transition-color duration-300 hover:border-tango-500">
@@ -67,7 +67,7 @@ const Form = ({ titileVisibe }: Props) => {
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-between items-center space-x-4">
+                <div className="w-full flex justify-between items-center space-x-4">
                     <div className="w-1/2 flex flex-col space-y-1">
                         <h5 className="text-base text-darkslategrey-600 font-medium">First Name</h5>
                         <input 
@@ -88,7 +88,7 @@ const Form = ({ titileVisibe }: Props) => {
                         />
                     </div>
                 </div>
-                <div className="flex justify-between items-center space-x-4">
+                <div className="w-full flex justify-between items-center space-x-4">
                     <div className="w-1/2 flex flex-col space-y-1">
                         <h5 className="text-base text-darkslategrey-600 font-medium">Email Address</h5>
                         <input 
@@ -111,7 +111,7 @@ const Form = ({ titileVisibe }: Props) => {
                         />
                     </div>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="w-full flex justify-between items-center">
                     <div className="w-full flex flex-col space-y-1">
                         <h5 className="text-base text-darkslategrey-600 font-medium">Company</h5>
                         <input 
@@ -122,8 +122,8 @@ const Form = ({ titileVisibe }: Props) => {
                         />
                     </div>
                 </div>
-                <MainButton className="top-18">
-                    <p className="text-white font-bold text-base whitespace-nowrap z-20 cursor-pointer">Get Connected</p>
+                <MainButton className="h-14 w-48">
+                    <p className="text-white font-medium text-xl whitespace-nowrap z-20 cursor-pointer">Get Connected</p>
                 </MainButton>
             </form>
         </section>
