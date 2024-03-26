@@ -14,9 +14,9 @@ import clsx from "clsx";
 type Options = 'Discount' | 'Increase' | 'Simple Percentage' | 'Increase/Decrease' | 'Percentage of A from B';
 
 export default function Home() {
+  const [cardsProgress, setCardsProgress] = useState(0);
   const [videoProgress, setVideoProgress] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [scroll, setScroll] = useState(0);
   const incRef = useRef(false);
   const title1Ref = useRef(false);
   const title2Ref = useRef(false);
@@ -52,7 +52,6 @@ export default function Home() {
   function scrollHandler(scrollHeight: number) {
     const currentProgress = percentageCalculator(window.scrollY, scrollHeight, 'Percentage of A from B')
     setProgress(currentProgress);
-    setScroll(window.scrollY);
   }
 
   function videoTransformHandler() {
@@ -65,6 +64,13 @@ export default function Home() {
     if (percent <= 57) return 57;
     if (percent >= 100) return 100;
     else return percent
+  }
+
+  function cardsScaleHandler() {
+    const scale = +(93 + cardsProgress).toFixed(6);
+    if (scale >= 100) return 1;
+    if (scale <= 93) return 0.93;
+    return (scale / 100);
   }
 
   useEffect(() => {
@@ -92,18 +98,17 @@ export default function Home() {
       title2Ref.current = true;
     if (progress >= 55 && progress <= 65)
       formTitleRef.current = true;
-    if (progress >= 75 && progress <= 93)
+    if (progress >= 66 && progress <= 95)
       backgroundRef.current = true;
+    if (progress >= 69 && progress <= 75)
+     setCardsProgress(+(100 - (window.scrollY * 100) / 6159).toFixed(6));
   }, [progress])
 
-  useEffect(() => {
-
-  }, [scroll])
 
   return (
-    <main className="relative flex flex-col items-center pt-32 bg-white overflow-x-hidden">
+    <main className="relative flex flex-col items-center pt-32 bg-white">
       <div className={`line fixed h-0.5 top-0 bg-tango-500 shadow shadow-tango-500 z-40 transition-all`} style={{ width: `${progress}%` }}></div>
-      <section className="w-full h-full flex flex-col items-center">
+      <section className="w-full h-full flex flex-col items-center bg-white">
         <Image
           src={Images.INC}
           width={165}
@@ -287,24 +292,20 @@ export default function Home() {
           backgroundRef.current && 'bg-steelgrey-500',
         )}
       >
-        <h2 className={clsx(
-          "text-5.5xl text-center font-bold text-frost-100",
-          "relative transition-opacity duration-700 z-30",
-          !backgroundRef.current && 'opacity-0 top-5',
-          backgroundRef.current && 'opacity-100 top-0',
-        )}
-          id="company_cards_title"
-        >
-          Who We Work With
-        </h2>
-        <div className="relative space-y-24 h-full w-full z-10">
-          <div 
-            className={clsx(
-              "w-full bg-frost-100 p-0.5 pb-3 rounded-3xl z-10",
-
-              // "relative top-[930px] scale-[0.93]",
-            )} 
-          > {/* sticky position not working :( */}
+        <div className="absolute top-0 bottom-0 w-full h-full pb-[735px] pt-28">
+          <h2 className={clsx(
+            "text-5.5xl text-center font-bold text-frost-100",
+            "relative transition-opacity duration-700 z-30 sticky top-20",
+            !backgroundRef.current && 'opacity-0 top-5',
+            backgroundRef.current && 'opacity-100 top-0',
+          )}
+            id="company_cards_title"
+          >
+            Who We Work With
+          </h2>
+        </div>
+        <div className="flex flex-col items-center space-y-24 h-[2517px] w-full z-10">
+          <div className={`w-full bg-frost-100 p-0.5 pb-3 rounded-3xl z-10 transition-transform duration-75 sticky top-48`} style={{transform: `scale(${cardsScaleHandler()})`}}> 
             <div className="w-full bg-steelgrey-500 flex flex-col items-center px-4 space-y-4 pt-4 pb-8 rounded-t-[22px] rounded-b-3xl">
               <div className="quote w-full flex justify-start items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" className="bi bi-quote text-frost-200 scale-y-75 scale-x-[1.15]" viewBox="0 0 16 16">
@@ -330,13 +331,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div 
-            className={clsx(
-              "w-full bg-frost-100 p-0.5 pb-3 rounded-3xl z-20",
-
-              // "relative top-[465px]",
-            )}
-          >
+          <div className={"w-full bg-frost-100 p-0.5 pb-3 rounded-3xl z-20 sticky top-59"}>
             <div className="w-full bg-steelgrey-500 flex flex-col items-center px-4 space-y-4 pt-4 pb-8 rounded-t-[22px] rounded-b-3xl">
               <div className="quote w-full flex justify-start items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" className="bi bi-quote text-frost-200 scale-y-75 scale-x-[1.15]" viewBox="0 0 16 16">
@@ -362,12 +357,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div 
-            className={clsx(
-              "w-full bg-frost-100 p-0.5 pb-3 rounded-3xl z-30",
-
-            )}
-          > 
+          <div className={"w-full bg-frost-100 p-0.5 pb-3 rounded-3xl z-30 sticky top-69"}> 
             <div className="w-full bg-steelgrey-500 flex flex-col items-center px-4 space-y-4 pt-4 pb-8 rounded-t-[22px] rounded-b-3xl">
               <div className="quote w-full flex justify-start items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" className="bi bi-quote text-frost-200 scale-y-75 scale-x-[1.15]" viewBox="0 0 16 16">
