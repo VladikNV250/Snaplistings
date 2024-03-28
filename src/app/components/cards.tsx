@@ -62,16 +62,16 @@ const Cards = () => {
     return (
         <div className="cards grid grid-cols-3 auto-rows-[384px] gap-4 px-48 mt-16">
             {cards.map((card, index) => (
-            <div key={index} className="group relative p-0.5 pb-3 bg-gradient-to-b from-darkslategrey-600/60 to-darkslategrey-600 rounded-xl cursor-pointer">
+            <div key={index} className="group relative p-0.5 pb-3 bg-gradient-to-b from-darkslategray-600/60 to-darkslategray-600 rounded-xl cursor-pointer">
                 <div className="info relative flex flex-col justify-between z-10 w-full h-58 px-6 py-6 text-left bg-neutral-100 rounded-t-[10px] overflow-hidden transition-all duration-500 group-hover:h-72">
                     <p 
-                      className={`relative text-3xl text-darkslategrey-600 font-semibold text-${card.title.type} z-10`}
+                      className={`relative text-3xl text-darkslategray-600 font-semibold text-${card.title.type} z-10`}
                       dangerouslySetInnerHTML={{ __html: card.title.name }}
                     >
                     </p>
                     <div className={`tags relative flex ${card.tags.length === 3 ? 'justify-between' : 'space-x-4'} items-center z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100`}>
                         {card.tags.map((tag, index) => (
-                            <div key={index} className="tag px-4 py-0.5 bg-transparent border-[1px] border-darkslategrey-600 rounded-full text-darkslategrey-600 text-sm">{tag}</div>
+                            <div key={index} className="tag px-4 py-0.5 bg-transparent border-[1px] border-darkslategray-600 rounded-full text-darkslategray-600 text-sm">{tag}</div>
                         ))}
                     </div>
                     <div className="absolute w-full h-full bg-card-pattern top-0 left-0 transition-opacity duration-500 group-hover:opacity-0" />

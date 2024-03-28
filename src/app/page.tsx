@@ -6,7 +6,6 @@ import { Images } from "./image";
 import Cards from "./components/cards";
 import Form from "./components/form";
 import BrandSlider from "./components/UI/brandslider";
-import Footer from "./components/footer";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
@@ -90,13 +89,14 @@ export default function Home() {
       incRef.current = true;
       title1Ref.current = true;
     }
+    console.log(progress)
     if (progress >= 0 && progress <= 18) {
       videoRef.current = true;
       setVideoProgress(+((window.scrollY * 100) / 551).toFixed(6));
     }
-    if (progress >= 30 && progress <= 40)
+    if (progress >= 24 && progress <= 36)
       title2Ref.current = true;
-    if (progress >= 55 && progress <= 65)
+    if (progress >= 50 && progress <= 57)
       formTitleRef.current = true;
     if (progress >= 66 && progress <= 95)
       backgroundRef.current = true;
@@ -123,7 +123,7 @@ export default function Home() {
         <h1
           className={clsx(
             "mt-5 text-7.5xl/tight text-center font-bold",
-            "bg-gradient-to-b from-darkslategrey-500 to-darkslategrey-600",
+            "bg-gradient-to-b from-darkslategray-500 to-darkslategray-600",
             "inline-block text-transparent bg-clip-text",
             "relative transition-all duration-700 delay-100",
             !title1Ref.current && 'opacity-0 top-5',
@@ -185,7 +185,7 @@ export default function Home() {
           ref={titleRef}
           className={clsx(
             "relative text-5.5xl text-center font-bold mt-5",
-            "bg-gradient-to-b from-darkslategrey-500 to-darkslategrey-600",
+            "bg-gradient-to-b from-darkslategray-500 to-darkslategray-600",
             "inline-block text-transparent bg-clip-text",
             "transition-all duration-300",
             !titleInView && 'opacity-0 top-5',
@@ -203,23 +203,23 @@ export default function Home() {
         <h2
           className={clsx(
             "mt-5 text-5.5xl text-center font-bold",
-            "bg-gradient-to-t from-darkslategrey-500 to-darkslategrey-600",
+            "bg-gradient-to-t from-darkslategray-500 to-darkslategray-600",
             "inline-block text-transparent bg-clip-text",
             "relative transition-all duration-300 delay-100",
             !title2Ref.current && 'opacity-0 top-5',
             title2Ref.current && 'opacity-100 top-0',
           )}
         >
-          Traditional Real Estate <br /> Marketing Doesn't Work
+          Traditional Real Estate <br /> Marketing Doesn&apos;t Work
         </h2>
         <section className="relative flex justify-between items-center space-x-40 mt-40">
           <div className="text space-y-4 z-10">
-            <h4 className="text-3xl font-bold bg-gradient-to-t from-darkslategrey-500 to-darkslategrey-600 inline-block text-transparent bg-clip-text">
+            <h4 className="text-3xl font-bold bg-gradient-to-t from-darkslategray-500 to-darkslategray-600 inline-block text-transparent bg-clip-text">
               We start with your <br />
               success metrics.
             </h4>
-            <p className="text-xl/6 text-darkslategrey-600">
-              We don't glorify vanity metrics like <br />
+            <p className="text-xl/6 text-darkslategray-600">
+              We don&apos;t glorify vanity metrics like <br />
               impressions and clicks, or sell you big <br />
               ideas with no execution firepower.
             </p>
@@ -244,12 +244,12 @@ export default function Home() {
             className="rounded-xl border-2 border-tango-500 z-10"
           />
           <div className="text space-y-4 z-10">
-            <h4 className="text-3xl font-bold bg-gradient-to-t from-darkslategrey-500 to-darkslategrey-600 inline-block text-transparent bg-clip-text">
+            <h4 className="text-3xl font-bold bg-gradient-to-t from-darkslategray-500 to-darkslategray-600 inline-block text-transparent bg-clip-text">
               We generate demand for your <br />
               property, portfolio, company <br />
               or product.
             </h4>
-            <p className="text-xl/6 text-darkslategrey-600">
+            <p className="text-xl/6 text-darkslategray-600">
               We set goals, solve problems, and execute <br />
               customer acquisition strategies with a unified  <br />
               team of experts. Our focus on essential metrics <br />
@@ -262,11 +262,11 @@ export default function Home() {
         </section>
         <section className="relative flex justify-between items-center space-x-30 mt-32 pr-8">
           <div className="text space-y-4 z-10">
-            <h4 className="text-3xl font-bold bg-gradient-to-t from-darkslategrey-500 to-darkslategrey-600 inline-block text-transparent bg-clip-text">
-              We'll be talking about your <br />
+            <h4 className="text-3xl font-bold bg-gradient-to-t from-darkslategray-500 to-darkslategray-600 inline-block text-transparent bg-clip-text">
+              We&apos;ll be talking about your <br />
               funnel, A LOT.
             </h4>
-            <p className="text-xl/6 text-darkslategrey-600">
+            <p className="text-xl/6 text-darkslategray-600">
               The full funnel execution is through strategy, <br />
               market research, branding, persona building, <br />
               print and digital advertising, websites, <br />
@@ -289,7 +289,7 @@ export default function Home() {
           "relative w-full flex flex-col items-center pt-48 px-96 pb-64 space-y-20",
           'transition-color duration-700 delay-100',
           !backgroundRef.current && 'bg-white',
-          backgroundRef.current && 'bg-steelgrey-500',
+          backgroundRef.current && 'bg-steelgray-500',
         )}
       >
         <div className="absolute top-0 bottom-0 w-full h-full pb-[735px] pt-28">
@@ -306,7 +306,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col items-center space-y-24 h-[2517px] w-full z-10">
           <div className={`w-full bg-frost-100 p-0.5 pb-3 rounded-3xl z-10 transition-transform duration-75 sticky top-48`} style={{transform: `scale(${cardsScaleHandler()})`}}> 
-            <div className="w-full bg-steelgrey-500 flex flex-col items-center px-4 space-y-4 pt-4 pb-8 rounded-t-[22px] rounded-b-3xl">
+            <div className="w-full bg-steelgray-500 flex flex-col items-center px-4 space-y-4 pt-4 pb-8 rounded-t-[22px] rounded-b-3xl">
               <div className="quote w-full flex justify-start items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" className="bi bi-quote text-frost-200 scale-y-75 scale-x-[1.15]" viewBox="0 0 16 16">
                   <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z" />
@@ -332,7 +332,7 @@ export default function Home() {
             </div>
           </div>
           <div className={"w-full bg-frost-100 p-0.5 pb-3 rounded-3xl z-20 sticky top-59"}>
-            <div className="w-full bg-steelgrey-500 flex flex-col items-center px-4 space-y-4 pt-4 pb-8 rounded-t-[22px] rounded-b-3xl">
+            <div className="w-full bg-steelgray-500 flex flex-col items-center px-4 space-y-4 pt-4 pb-8 rounded-t-[22px] rounded-b-3xl">
               <div className="quote w-full flex justify-start items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" className="bi bi-quote text-frost-200 scale-y-75 scale-x-[1.15]" viewBox="0 0 16 16">
                   <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z" />
@@ -358,7 +358,7 @@ export default function Home() {
             </div>
           </div>
           <div className={"w-full bg-frost-100 p-0.5 pb-3 rounded-3xl z-30 sticky top-69"}> 
-            <div className="w-full bg-steelgrey-500 flex flex-col items-center px-4 space-y-4 pt-4 pb-8 rounded-t-[22px] rounded-b-3xl">
+            <div className="w-full bg-steelgray-500 flex flex-col items-center px-4 space-y-4 pt-4 pb-8 rounded-t-[22px] rounded-b-3xl">
               <div className="quote w-full flex justify-start items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" className="bi bi-quote text-frost-200 scale-y-75 scale-x-[1.15]" viewBox="0 0 16 16">
                   <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388q0-.527.062-1.054.093-.558.31-.992t.559-.683q.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 9 7.558V11a1 1 0 0 0 1 1zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612q0-.527.062-1.054.094-.558.31-.992.217-.434.559-.683.34-.279.868-.279V3q-.868 0-1.52.372a3.3 3.3 0 0 0-1.085.992 4.9 4.9 0 0 0-.62 1.458A7.7 7.7 0 0 0 3 7.558V11a1 1 0 0 0 1 1z" />
@@ -384,7 +384,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <BrandSlider />
+        <BrandSlider id="brands-slider" mode="brand"/>
+        {/* <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 w-[1600px] h-64 bg-red-500 z-20"></div> */}
         <div className="absolute w-full h-[280px] bottom-0 left-0">
           <Image
             src={Images.BACKGROUND2}
@@ -393,7 +394,6 @@ export default function Home() {
           />
         </div>
       </section>
-      <Footer />
     </main>
   );
 }
