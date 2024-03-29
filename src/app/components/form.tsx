@@ -1,19 +1,30 @@
-import { MutableRefObject } from "react";
+"use client"
 import MainButton from "./UI/mainbutton";
 import clsx from "clsx";
+import { useInView } from "react-intersection-observer";
+import { Images } from "../image";
+import Image from "next/image";
 
-interface Props {
-    titileVisibe: boolean,
-}
+const Form = () => {
+    const [formRef, formInView, formEntry] = useInView({
+        threshold: 0.2,
+        triggerOnce: true,
+    })
 
-const Form = ({ titileVisibe }: Props) => {
+
     return (
         <section className="relative overflow-hidden w-full flex flex-col items-center pt-32 pb-64 bg-neutral-100">
-            <div className="background absolute w-full h-full top-0 left-0">
+            <div className="background absolute w-full h-full top-0 left-0 z-10">
                 <div className="absolute w-full h-4 bg-black/15 top-0 left-0 blur-lg"></div>
                 <div className="absolute w-full h-4 bg-black/30 bottom-0 left-0  blur-lg"></div>
-                {/* <div className="absolute w-[650px] h-[600px] rotate-[-30deg] rounded-full bg-tango-500/30 bottom-[-8rem] right-64 blur-3xl"></div> */}
-                <svg id="sw-js-blob-svg" viewBox="0 0 100 100" className="absolute rotate-[-30deg] scale-x-[0.7] bottom-[-90rem] right-[-50rem] opacity-30 blur-3xl" xmlns="http://www.w3.org/2000/svg">
+                <div className="absolute w-full h-full top-0 left-0">
+                    <Image
+                        src={Images.BACKGROUNDFORM}
+                        alt="background"
+                        fill={true}
+                    />
+                </div>
+                {/* <svg id="sw-js-blob-svg" viewBox="0 0 100 100" className="absolute rotate-[-30deg] scale-x-[0.7] bottom-[-90rem] right-[-50rem] opacity-30 blur-3xl" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">
                             <stop id="stop1" stopColor="rgba(248, 117, 55, 1)" offset="0%"></stop>
@@ -21,20 +32,23 @@ const Form = ({ titileVisibe }: Props) => {
                         </linearGradient>
                     </defs>
                     <path className="" fill="#f47f20" d="M24.5,-1.6C24.5,12.5,12.3,25,-0.5,25C-13.3,25,-26.6,12.5,-26.6,-1.6C-26.6,-15.8,-13.3,-31.6,-0.5,-31.6C12.3,-31.6,24.5,-15.8,24.5,-1.6Z" width="100%" height="100%" transform="translate(50 50)" strokeWidth="0"></path>              
-                </svg>
+                </svg> */}
             </div>
-            <h2 className={clsx(
-                "text-5.5xl text-center font-bold",
-                "bg-gradient-to-b from-darkslategray-500 to-darkslategray-600",
-                "inline-block text-transparent bg-clip-text",
-                'relative transition-all duration-300 delay-100',
-                !titileVisibe && 'opacity-0 top-5',
-                titileVisibe && 'opacity-100 top-0',
-            )}>
+            <h2 
+                className={clsx(
+                    "text-5.5xl text-center font-bold",
+                    "bg-gradient-to-b from-darkslategray-500 to-darkslategray-600",
+                    "inline-block text-transparent bg-clip-text",
+                    'relative transition-all duration-300 delay-100 z-20',
+                    !formInView && 'opacity-0 top-5',
+                    formInView && 'opacity-100 top-0',
+                )}
+                ref={formRef}
+            >
                 Hi! Let&apos;s solve your problem together
             </h2>
-            <p className="text-xl text-stone-900 mt-4">Request a case study in your industry and chat with our team!</p>
-            <form action="" className="flex flex-col items-center z-10 mt-18 space-y-6">
+            <p className="text-xl text-stone-900 mt-4 z-20">Request a case study in your industry and chat with our team!</p>
+            <form action="" className="flex flex-col items-center z-10 mt-18 space-y-6 z-20">
                 <div className="w-full relative flex flex-col">
                     <h5 className="text-base text-darkslategray-600 font-medium">What is your industry?</h5>
                     <div className="flex justify-between items-center space-x-4 mt-1">
@@ -122,10 +136,11 @@ const Form = ({ titileVisibe }: Props) => {
                         />
                     </div>
                 </div>
-                <MainButton className="h-14 w-48">
-                    <p className="text-white font-medium text-xl whitespace-nowrap z-20 cursor-pointer">Get Connected</p>
-                </MainButton>
+
             </form>
+            <MainButton className="h-14 w-48 bg-white border-darkslategray-600 z-20 mt-20" bgClassName="bg-darkslategray-600">
+                <p className="text-white font-medium text-xl whitespace-nowrap z-20 cursor-pointer">Get Connected</p>
+            </MainButton>
         </section>
     )
 }

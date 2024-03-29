@@ -45,7 +45,7 @@ const Navbar = () => {
                 <Link href={'/study'} className="relative text-base text-darkslategray-600">Case Studies</Link>
                 <Link href={'/press'} className="relative text-base text-darkslategray-600">Press</Link>
             </div>
-            <MainButton className="w-40 h-11">
+            <MainButton className="w-40 h-11 bg-white border-darkslategray-600" bgClassName="bg-darkslategray-600">
                 <p className="text-white font-bold text-base whitespace-nowrap z-20 cursor-pointer">Get Connected</p>                
             </MainButton>
         </nav>

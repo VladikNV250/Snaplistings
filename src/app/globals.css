@@ -22,11 +22,6 @@ body {
 
 .links > *:hover::after { width: 100%; opacity: 1;}
 
-.main_btn:hover button {
-    width: 10rem;
-    height: 2.75rem;
-}
-
 .triangle-1 {
     content: '';
     position: absolute;
@@ -54,14 +49,6 @@ body {
     transform: rotate(215deg);
 }
 
-.main_btn:hover span .triangle-1,
-.main_btn:hover span .triangle-2 {
-    border-top: 6px solid #083c48;
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
-}
-
 .center {
     top: 50%;
     left: 50%;
@@ -77,6 +64,10 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+.main_btn {
+    clip-path: polygon(83% 0, 85% 10%, 85% 0, 100% 0, 100% 100%, 15% 100%, 15% 90%, 13% 100%, 0 100%, 0 0);
 }
 
 .clip-triangle { clip-path: polygon(0 0, 0% 100%, 100% 0); }

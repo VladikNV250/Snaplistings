@@ -19,7 +19,6 @@ export default function Home() {
   const incRef = useRef(false);
   const title1Ref = useRef(false);
   const title2Ref = useRef(false);
-  const formTitleRef = useRef(false);
   const backgroundRef = useRef(false);
   const videoRef = useRef(false);
 
@@ -96,8 +95,6 @@ export default function Home() {
     }
     if (progress >= 24 && progress <= 36)
       title2Ref.current = true;
-    if (progress >= 50 && progress <= 57)
-      formTitleRef.current = true;
     if (progress >= 66 && progress <= 95)
       backgroundRef.current = true;
     if (progress >= 69 && progress <= 75)
@@ -144,11 +141,12 @@ export default function Home() {
         </p>
         <MainButton
           className={clsx(
-            'w-48 h-14',
+            'w-48 h-14 bg-white border-darkslategray-600',
             "mt-16 transition-all duration-700 delay-100",
             !buttonInView && 'opacity-0 top-5',
             buttonInView && 'opacity-100 top-0',
           )}
+          bgClassName="darkslategray-600"
         >
           <p ref={buttonRef} className="text-white font-bold text-xl whitespace-nowrap z-20 cursor-pointer">
             Get Connected
@@ -194,8 +192,8 @@ export default function Home() {
         >
           Problem Solving & Delivering Results
         </h2>
-        <Cards />
-        <MainButton className="mt-18 w-60 h-14">
+        <Cards length={6}/>
+        <MainButton className="mt-18 w-60 h-14 bg-white border-darkslategray-600" bgClassName="bg-darkslategray-600">
           <p className="text-white font-bold text-xl whitespace-nowrap z-20 cursor-pointer">View Case Studies</p>
         </MainButton>
       </section>
@@ -283,7 +281,7 @@ export default function Home() {
           />
         </section>
       </section>
-      <Form titileVisibe={formTitleRef.current} />
+      <Form />
       <section
         className={clsx(
           "relative w-full flex flex-col items-center pt-48 px-96 pb-64 space-y-20",

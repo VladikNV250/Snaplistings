@@ -1,6 +1,8 @@
 import background1 from "./../../public/bg.png";
 import background2 from "./../../public/bg1.svg";
 import background3 from "./../../public/bg2.webp";
+import background4 from "./../../public/bg3.webp";
+import background5 from "./../../public/bgform.webp";
 import inc from './../../public/inc500.png';
 import sl from './../../public/sl.png';
 import snaplistings from './../../public/snaplistings.png';
@@ -32,6 +34,8 @@ export const Images = {
     BACKGROUND1: background1.src,
     BACKGROUND2: background2.src,
     BACKGROUND3: background3.src,
+    BACKGROUND4: background4.src,
+    BACKGROUNDFORM: background5.src,
     INC: inc.src,
     SNAPLISTINGS: snaplistings.src,
     SNAPLISTINGS_WHITE: snaplistingsWhite.src,
