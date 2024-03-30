@@ -9,6 +9,7 @@ import BrandSlider from "./components/UI/brandslider";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
+import Link from "next/link";
 
 type Options = 'Discount' | 'Increase' | 'Simple Percentage' | 'Increase/Decrease' | 'Percentage of A from B';
 
@@ -146,11 +147,11 @@ export default function Home() {
             !buttonInView && 'opacity-0 top-5',
             buttonInView && 'opacity-100 top-0',
           )}
-          bgClassName="darkslategray-600"
+          bgClassName="bg-darkslategray-600"
         >
-          <p ref={buttonRef} className="text-white font-bold text-xl whitespace-nowrap z-20 cursor-pointer">
+          <Link href="#form" ref={buttonRef} className="text-white font-bold text-xl whitespace-nowrap z-20 cursor-pointer">
             Get Connected
-          </p>
+          </Link>
         </MainButton>
         <div className="w-full h-[768px] mt-16 relative overflow-hidden flex justify-center pt-20 px-52">
           <Image

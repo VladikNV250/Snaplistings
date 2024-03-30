@@ -2,13 +2,17 @@ import { ReactNode } from "react";
 interface Props {
     children?: ReactNode,
     className?: string,
-    bgClassName?: string
+    bgClassName?: string,
+    type?: 'submit' | 'button',
+    form?: string,
 } 
 
-const MainButton = ({children, className, bgClassName}: Props) => {
+const MainButton = ({children, className, bgClassName, type = 'button', form}: Props) => {
 
     return (
         <button 
+            form={form}
+            type={type}
             className={
                 `group relative flex justify-center items-center
                 border-[1px] rounded-full overflow-hidden ` + className }

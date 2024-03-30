@@ -13,7 +13,7 @@ const Form = () => {
 
 
     return (
-        <section className="relative overflow-hidden w-full flex flex-col items-center pt-32 pb-64 bg-neutral-100">
+        <section className="relative overflow-hidden w-full flex flex-col items-center pt-32 pb-64 bg-neutral-100" id="form">
             <div className="background absolute w-full h-full top-0 left-0 z-10">
                 <div className="absolute w-full h-4 bg-black/15 top-0 left-0 blur-lg"></div>
                 <div className="absolute w-full h-4 bg-black/30 bottom-0 left-0  blur-lg"></div>
@@ -22,17 +22,9 @@ const Form = () => {
                         src={Images.BACKGROUNDFORM}
                         alt="background"
                         fill={true}
+                        sizes="100vw"
                     />
                 </div>
-                {/* <svg id="sw-js-blob-svg" viewBox="0 0 100 100" className="absolute rotate-[-30deg] scale-x-[0.7] bottom-[-90rem] right-[-50rem] opacity-30 blur-3xl" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">
-                            <stop id="stop1" stopColor="rgba(248, 117, 55, 1)" offset="0%"></stop>
-                            <stop id="stop2" stopColor="rgba(251, 168, 31, 1)" offset="100%"></stop>
-                        </linearGradient>
-                    </defs>
-                    <path className="" fill="#f47f20" d="M24.5,-1.6C24.5,12.5,12.3,25,-0.5,25C-13.3,25,-26.6,12.5,-26.6,-1.6C-26.6,-15.8,-13.3,-31.6,-0.5,-31.6C12.3,-31.6,24.5,-15.8,24.5,-1.6Z" width="100%" height="100%" transform="translate(50 50)" strokeWidth="0"></path>              
-                </svg> */}
             </div>
             <h2 
                 className={clsx(
@@ -138,7 +130,7 @@ const Form = () => {
                 </div>
 
             </form>
-            <MainButton className="h-14 w-48 bg-white border-darkslategray-600 z-20 mt-20" bgClassName="bg-darkslategray-600">
+            <MainButton form="form" type="submit" className="h-14 w-48 bg-white border-darkslategray-600 z-20 mt-20" bgClassName="bg-darkslategray-600">
                 <p className="text-white font-medium text-xl whitespace-nowrap z-20 cursor-pointer">Get Connected</p>
             </MainButton>
         </section>

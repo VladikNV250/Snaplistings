@@ -11,7 +11,8 @@ const Cards = ({length}: {length: number}) => {
             },
             tags: ['Marketing', 'Branding', 'Web Design'],
             bgImage: {src: Images.CARDS.CARD1, alt: 'LA BAIA builing'},
-            brandImage: {src: Images.BRANDS.LABAIA, alt: 'La Baia', width: 134, height: 50}
+            brandImage: {src: Images.BRANDS.LABAIA, alt: 'La Baia', width: 134, height: 50},
+            available: true,
         },
         {
             title: {
@@ -20,7 +21,8 @@ const Cards = ({length}: {length: number}) => {
             },
             tags: ['Marketing', 'Branding'],
             bgImage: {src: Images.CARDS.CARD2, alt: '30 Kent Building'},
-            brandImage: {src: Images.BRANDS.KENT_STREET, alt: '30 Kent Street', width: 134, height: 50}
+            brandImage: {src: Images.BRANDS.KENT_STREET, alt: '30 Kent Street', width: 134, height: 50},
+            available: true,
         },
         {
             title: {
@@ -29,7 +31,8 @@ const Cards = ({length}: {length: number}) => {
             },
             tags: ['Marketing'],
             bgImage: {src: Images.CARDS.CARD3, alt: 'COHO business cards'},
-            brandImage: {src: Images.BRANDS.ORI, alt: 'ORI', width: 70, height: 30}
+            brandImage: {src: Images.BRANDS.ORI, alt: 'ORI', width: 70, height: 30},
+            available: true,
         },
         {
             title: {
@@ -38,7 +41,8 @@ const Cards = ({length}: {length: number}) => {
             },
             tags: ['Marketing', 'Branding', 'Web Design'],
             bgImage: {src: Images.CARDS.CARD4, alt: 'Tree Top Building'},
-            brandImage: {src: Images.BRANDS.TREETOP, alt: 'Tree Top', width: 134, height: 30}
+            brandImage: {src: Images.BRANDS.TREETOP, alt: 'Tree Top', width: 134, height: 30},
+            available: true,
         },
         {
             title: {
@@ -47,7 +51,8 @@ const Cards = ({length}: {length: number}) => {
             },
             tags: ['Marketing', 'Branding'],
             bgImage: {src: Images.CARDS.CARD5, alt: 'Stonehenge building'},
-            brandImage: {src: Images.BRANDS.STONEHENGE, alt: 'Stonehenge', width: 128, height: 20}
+            brandImage: {src: Images.BRANDS.STONEHENGE, alt: 'Stonehenge', width: 128, height: 20},
+            available: true,
         },
         {
             title: {
@@ -56,7 +61,8 @@ const Cards = ({length}: {length: number}) => {
             },
             tags: ['Marketing', 'Branding', 'Web Design'],
             bgImage: {src: Images.CARDS.CARD6, alt: 'photo of a living room that can raise a bed to reveal a couch'},
-            brandImage: {src: Images.BRANDS.ORI, alt: 'ORI', width: 70, height: 30}
+            brandImage: {src: Images.BRANDS.ORI, alt: 'ORI', width: 70, height: 30},
+            available: true,
         },
         {
             title: {
@@ -64,8 +70,9 @@ const Cards = ({length}: {length: number}) => {
                 type: 'balance'
             },
             tags: ['Marketing', 'Web Design'],
-            bgImage: {src: Images.CARDS.CARD6, alt: 'photo of a living room that can raise a bed to reveal a couch'},
-            brandImage: {src: Images.BRANDS.ORI, alt: 'ORI', width: 70, height: 30}
+            bgImage: {src: Images.CARDS.CARD7, alt: '2 Cooper Unit'},
+            brandImage: {src: Images.BRANDS.TWOCOOPER, alt: '2COOPER', width: 70, height: 30},
+            available: true,
         },
         {
             title: {
@@ -73,8 +80,9 @@ const Cards = ({length}: {length: number}) => {
                 type: 'balance'
             },
             tags: ['Marketing', 'Branding'],
-            bgImage: {src: Images.CARDS.CARD6, alt: 'photo of a living room that can raise a bed to reveal a couch'},
-            brandImage: {src: Images.BRANDS.ORI, alt: 'ORI', width: 70, height: 30}
+            bgImage: {src: Images.CARDS.CARD8, alt: 'Cretech conference event'},
+            brandImage: {src: Images.BRANDS.CRETECH, alt: 'Cretech', width: 70, height: 30},
+            available: false,
         },
         {
             title: {
@@ -82,8 +90,9 @@ const Cards = ({length}: {length: number}) => {
                 type: 'balance'
             },
             tags: ['Marketing'],
-            bgImage: {src: Images.CARDS.CARD6, alt: 'photo of a living room that can raise a bed to reveal a couch'},
-            brandImage: {src: Images.BRANDS.ORI, alt: 'ORI', width: 70, height: 30}
+            bgImage: {src: Images.CARDS.CARD9, alt: 'WestView Room'},
+            brandImage: {src: Images.BRANDS.WV, alt: 'WV', width: 70, height: 30},
+            available: false,
         },
         {
             title: {
@@ -91,8 +100,9 @@ const Cards = ({length}: {length: number}) => {
                 type: 'balance'
             },
             tags: ['Marketing', 'Web Design'],
-            bgImage: {src: Images.CARDS.CARD6, alt: 'photo of a living room that can raise a bed to reveal a couch'},
-            brandImage: {src: Images.BRANDS.ORI, alt: 'ORI', width: 70, height: 30}
+            bgImage: {src: Images.CARDS.CARD10, alt: 'Haystacks Location Map'},
+            brandImage: {src: Images.BRANDS.HAYSTACKAI, alt: 'Haystack.ai', width: 70, height: 30},
+            available: false,
         },
     ]
 
@@ -130,7 +140,10 @@ const Cards = ({length}: {length: number}) => {
                                 alt={card.brandImage.alt}
                                 className={`absolute w-[${card.brandImage.width}px] h-[${card.brandImage.height}px] bottom-6 left-6`}
                             />
-                            <MoreButton className="absolute bottom-6 right-24 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:right-6" />
+                            {card.available                            
+                            ? <MoreButton className="absolute bottom-6 right-24 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:right-6" />
+                            : <p className="text-sm font-bold italic text-white absolute bottom-6 right-24 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:right-6">Coming Soon</p>
+                            }          
                         </div>
                     </div>
                 )   

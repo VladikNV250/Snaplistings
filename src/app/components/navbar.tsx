@@ -33,20 +33,22 @@ const Navbar = () => {
                 "transition-all duration-500 transform",
                 !visible && '-translate-y-18'
             )}
-        >
-            <Image
-              src={logo.src}
-              width={235}
-              height={26}
-              alt="SNAPLISTINGS" 
-            />
+        >   
+            <Link href={'/'}>
+                <Image
+                    src={logo.src}
+                    width={235}
+                    height={26}
+                    alt="SNAPLISTINGS" 
+                />
+            </Link>
             <div className="links absolute left-1/2 transform -translate-x-1/2 h-full flex items-center space-x-12">
                 <Link href={'/about'} className="relative text-base text-darkslategray-600">About</Link>
                 <Link href={'/study'} className="relative text-base text-darkslategray-600">Case Studies</Link>
                 <Link href={'/press'} className="relative text-base text-darkslategray-600">Press</Link>
             </div>
             <MainButton className="w-40 h-11 bg-white border-darkslategray-600" bgClassName="bg-darkslategray-600">
-                <p className="text-white font-bold text-base whitespace-nowrap z-20 cursor-pointer">Get Connected</p>                
+                <Link href="#form" className="text-white font-bold text-base whitespace-nowrap z-20 cursor-pointer">Get Connected</Link>                
             </MainButton>
         </nav>
     )

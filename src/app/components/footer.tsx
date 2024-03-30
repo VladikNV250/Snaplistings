@@ -44,6 +44,7 @@ const Footer = () => {
                     <Image
                         src={Images.BACKGROUND3}
                         fill={true}
+                        sizes="100vw"
                         alt=""
                     />
                 </div>
