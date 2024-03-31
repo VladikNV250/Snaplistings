@@ -1,8 +1,11 @@
-import background1 from "./../../public/bg.png";
+import background1 from "./../../public/bg.png"
 import background2 from "./../../public/bg1.svg";
 import background3 from "./../../public/bg2.webp";
 import background4 from "./../../public/bg3.webp";
-import background5 from "./../../public/bgform.webp";
+import background5 from "./../../public/bg5.webp";
+import background6 from "./../../public/bg6.svg";
+import backgroundForm from "./../../public/bgform.webp";
+
 
 import inc from './../../public/inc500.png';
 import sl from './../../public/sl.png';
@@ -10,12 +13,19 @@ import snaplistings from './../../public/snaplistings.png';
 import snaplistingsWhite from './../../public/snaplistings-white.png';
 
 import card1 from './../../public/card-1.webp';
+import card1_full from './../../public/card-1_full.webp';
 import card2 from './../../public/card-2.webp';
+import card2_full from './../../public/card-2_full.webp';
 import card3 from './../../public/card-3.webp';
+import card3_full from './../../public/card-3_full.webp';
 import card4 from './../../public/card-4.webp';
+import card4_full from './../../public/card-4_full.webp';
 import card5 from './../../public/card-5.webp';
+import card5_full from './../../public/card-5_full.webp';
 import card6 from './../../public/card-6.webp';
+import card6_full from './../../public/card-6_full.webp';
 import card7 from './../../public/card-7.webp';
+import card7_full from './../../public/card-7_full.webp';
 import card8 from './../../public/card-8.webp';
 import card9 from './../../public/card-9.webp';
 import card10 from './../../public/card-10.webp';
@@ -78,7 +88,9 @@ export const Images = {
     BACKGROUND2: background2.src,
     BACKGROUND3: background3.src,
     BACKGROUND4: background4.src,
-    BACKGROUNDFORM: background5.src,
+    BACKGROUND5: background5.src,
+    BACKGROUND6: background6.src,
+    BACKGROUNDFORM: backgroundForm.src,
 
     INC: inc.src,
     SNAPLISTINGS: snaplistings.src,
@@ -90,6 +102,15 @@ export const Images = {
     ANIMATEDCARD3: animatedCard3.src, 
 
     CARDS: {
+        FULL: {
+            CARD1: card1_full.src,
+            CARD2: card2_full.src,
+            CARD3: card3_full.src,
+            CARD4: card4_full.src,
+            CARD5: card5_full.src,
+            CARD6: card6_full.src,
+            CARD7: card7_full.src,
+        },
         CARD1: card1.src,
         CARD2: card2.src,
         CARD3: card3.src,

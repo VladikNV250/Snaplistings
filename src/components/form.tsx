@@ -2,15 +2,11 @@
 import MainButton from "./UI/mainbutton";
 import clsx from "clsx";
 import { useInView } from "react-intersection-observer";
-import { Images } from "../image";
+import { Images } from "./../assets/image";
 import Image from "next/image";
 
 const Form = () => {
-    const [formRef, formInView, formEntry] = useInView({
-        threshold: 0.2,
-        triggerOnce: true,
-    })
-
+    const [formRef, formInView] = useInView({threshold: 0.2, triggerOnce: true})
 
     return (
         <section className="relative overflow-hidden w-full flex flex-col items-center pt-32 pb-64 bg-neutral-100" id="form">

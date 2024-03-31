@@ -50,10 +50,6 @@ const config: Config = {
         'card-pattern-none': 'linear-gradient(135deg, rgba(245, 245, 245, 1) 20%, rgba(245, 245, 245, 1) 100%)',
       },
       keyframes: {
-        'slide-firstly': {
-          '0%': {transform: 'translateX(0)'},
-          '100%': {transform: 'translateX(-100%)'}, 
-        },
         'slide': {
           '0%': {transform: 'translateX(0)'},
           '100%': {transform: 'translateX(calc(-100% - 2536px))'}, 
@@ -64,9 +60,9 @@ const config: Config = {
         }
       },
       animation: {
-        'slide-firstly': 'slide-firstly 34s linear',
+        'slide-firstly': 'slide 68s linear -34s infinite',
         'slide': 'slide 68s linear infinite',
-        'slide-slower-firstly': 'slide-firstly 46s linear',
+        'slide-slower-firstly': 'slide-slower 92s linear -46s infinite',
         'slide-slower': 'slide-slower 92s linear infinite',
       }
     },

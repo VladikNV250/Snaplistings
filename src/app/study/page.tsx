@@ -1,8 +1,8 @@
 import Link from "next/link";
-import MainButton from "../components/UI/mainbutton";
-import Cards from "../components/cards";
+import MainButton from "../../components/UI/mainbutton";
+import Cards from "../../components/cards";
 import Image from "next/image";
-import { Images } from "../image";
+import { Images } from "../../assets/image";
 
 export default function Study() {
     return (

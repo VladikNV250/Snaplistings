@@ -10,6 +10,13 @@ body {
     overflow-x: hidden;
 }
 
+/* ol > li::before {
+    content: "";
+    width: 20px;
+    height: 100%;
+    display: inline-block;
+} */
+
 .links > *::after {
     content: "";
     position: absolute;

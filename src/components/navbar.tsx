@@ -1,10 +1,10 @@
 "use client"
 import Image from "next/image";
-import logo from "./../../../public/snaplistings.png";
 import Link from "next/link";
 import MainButton from "./UI/mainbutton";
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
+import { Images } from "@/assets/image";
 
 const Navbar = () => {
     const [visible, setVisible] = useState(true);
@@ -36,7 +36,7 @@ const Navbar = () => {
         >   
             <Link href={'/'}>
                 <Image
-                    src={logo.src}
+                    src={Images.SNAPLISTINGS}
                     width={235}
                     height={26}
                     alt="SNAPLISTINGS" 

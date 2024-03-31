@@ -1,12 +1,12 @@
 "use client"
 import Image from "next/image";
-import MainButton from "./components/UI/mainbutton";
-import VideoPlayer from "./components/UI/videoplayer";
-import { Images } from "./image";
-import Cards from "./components/cards";
-import Form from "./components/form";
-import BrandSlider from "./components/UI/brandslider";
-import { useEffect, useRef, useState } from "react";
+import MainButton from "../components/UI/mainbutton";
+import VideoPlayer from "../components/UI/videoplayer";
+import { Images } from "../assets/image";
+import Cards from "../components/cards";
+import Form from "../components/form";
+import BrandSlider from "../components/UI/brandslider";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
 import Link from "next/link";
@@ -17,19 +17,13 @@ export default function Home() {
   const [cardsProgress, setCardsProgress] = useState(0);
   const [videoProgress, setVideoProgress] = useState(0);
   const [progress, setProgress] = useState(0);
-  const incRef = useRef(false);
-  const title1Ref = useRef(false);
-  const title2Ref = useRef(false);
-  const backgroundRef = useRef(false);
-  const videoRef = useRef(false);
 
-
-  const [titleRef, titleInView, titleEntry] = useInView({
-    threshold: 0.5,
-  })
-  const [buttonRef, buttonInView, butttonEntry] = useInView({
-    threshold: 0.1,
-  })
+  const [backgroundRef, backgroundInView] = useInView({threshold: 0.17, triggerOnce: true})
+  const [incRef, incInView] = useInView({threshold: 0.5, triggerOnce: true})
+  const [title1Ref, title1InView] = useInView({threshold: 0.5, triggerOnce: true})
+  const [title2Ref, title2InView] = useInView({threshold: 0.5})
+  const [title3Ref, title3InView] = useInView({threshold: 0.35, triggerOnce: true})
+  const [buttonRef, buttonInView] = useInView({threshold: 0.1})
 
 
   function percentageCalculator(a: number, b: number, option: Options): number {
@@ -85,19 +79,9 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    if (progress >= 0 && progress <= 5) {
-      incRef.current = true;
-      title1Ref.current = true;
-    }
-    console.log(progress)
     if (progress >= 0 && progress <= 18) {
-      videoRef.current = true;
       setVideoProgress(+((window.scrollY * 100) / 551).toFixed(6));
     }
-    if (progress >= 24 && progress <= 36)
-      title2Ref.current = true;
-    if (progress >= 66 && progress <= 95)
-      backgroundRef.current = true;
     if (progress >= 69 && progress <= 75)
      setCardsProgress(+(100 - (window.scrollY * 100) / 6159).toFixed(6));
   }, [progress])
@@ -108,24 +92,26 @@ export default function Home() {
       <div className={`line fixed h-0.5 top-0 bg-tango-500 shadow shadow-tango-500 z-40 transition-all`} style={{ width: `${progress}%` }}></div>
       <section className="w-full h-full flex flex-col items-center bg-white">
         <Image
+          ref={incRef}
           src={Images.INC}
           width={165}
           height={47}
           alt="INC.500"
           className={clsx(
             "relative transition-all duration-500 delay-100",
-            !incRef.current && 'opacity-0 top-5',
-            incRef.current && 'opacity-100 top-0',
+            !incInView && 'opacity-0 top-5',
+            incInView && 'opacity-100 top-0',
           )}
         />
         <h1
+          ref={title1Ref}
           className={clsx(
             "mt-5 text-7.5xl/tight text-center font-bold",
             "bg-gradient-to-b from-darkslategray-500 to-darkslategray-600",
             "inline-block text-transparent bg-clip-text",
             "relative transition-all duration-700 delay-100",
-            !title1Ref.current && 'opacity-0 top-5',
-            title1Ref.current && 'opacity-100 top-0',
+            !title1InView && 'opacity-0 top-5',
+            title1InView && 'opacity-100 top-0',
           )}
         >
           The Most Effective <br /> Marketing In Real Estate
@@ -167,13 +153,7 @@ export default function Home() {
           >
             <VideoPlayer
               src={'/teaser.mp4'}
-              className={clsx(
-                `z-20 w-full h-full object-cover`,
-                `border-[1px] border-black rounded-xl`,
-                `relative transition-opacity duration-500 delay-[600ms] `,
-                !videoRef.current && 'opacity-0 top-5',
-                videoRef.current && 'opacity-100 top-0'
-              )}
+              className={`z-20 w-full h-full object-cover border-[1px] border-black rounded-xl`}
             />
           </div>
 
@@ -181,14 +161,14 @@ export default function Home() {
       </section>
       <section className="bg-neutral-100 w-full pt-24 flex flex-col items-center pb-16">
         <h2
-          ref={titleRef}
+          ref={title2Ref}
           className={clsx(
             "relative text-5.5xl text-center font-bold mt-5",
             "bg-gradient-to-b from-darkslategray-500 to-darkslategray-600",
             "inline-block text-transparent bg-clip-text",
             "transition-all duration-300",
-            !titleInView && 'opacity-0 top-5',
-            titleInView && 'opacity-100 top-0',
+            !title2InView && 'opacity-0 top-5',
+            title2InView && 'opacity-100 top-0',
           )}
         >
           Problem Solving & Delivering Results
@@ -200,13 +180,14 @@ export default function Home() {
       </section>
       <section className="bg-white w-full pt-24 pb-32 flex flex-col items-center">
         <h2
+          ref={title3Ref}
           className={clsx(
             "mt-5 text-5.5xl text-center font-bold",
             "bg-gradient-to-t from-darkslategray-500 to-darkslategray-600",
             "inline-block text-transparent bg-clip-text",
             "relative transition-all duration-300 delay-100",
-            !title2Ref.current && 'opacity-0 top-5',
-            title2Ref.current && 'opacity-100 top-0',
+            !title3InView && 'opacity-0 top-5',
+            title3InView && 'opacity-100 top-0',
           )}
         >
           Traditional Real Estate <br /> Marketing Doesn&apos;t Work
@@ -284,19 +265,20 @@ export default function Home() {
       </section>
       <Form />
       <section
+        ref={backgroundRef}
         className={clsx(
           "relative w-full flex flex-col items-center pt-48 px-96 pb-64 space-y-20",
           'transition-color duration-700 delay-100',
-          !backgroundRef.current && 'bg-white',
-          backgroundRef.current && 'bg-steelgray-500',
+          !backgroundInView && 'bg-white',
+          backgroundInView && 'bg-steelgray-500',
         )}
       >
         <div className="absolute top-0 bottom-0 w-full h-full pb-[735px] pt-28">
           <h2 className={clsx(
             "text-5.5xl text-center font-bold text-frost-100",
             "relative transition-opacity duration-700 z-30 sticky top-20",
-            !backgroundRef.current && 'opacity-0 top-5',
-            backgroundRef.current && 'opacity-100 top-0',
+            !backgroundInView && 'opacity-0 top-5',
+            backgroundInView && 'opacity-100 top-0',
           )}
             id="company_cards_title"
           >
@@ -384,7 +366,6 @@ export default function Home() {
           </div>
         </div>
         <BrandSlider id="brands-slider" mode="brand"/>
-        {/* <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 w-[1600px] h-64 bg-red-500 z-20"></div> */}
         <div className="absolute w-full h-[280px] bottom-0 left-0">
           <Image
             src={Images.BACKGROUND2}

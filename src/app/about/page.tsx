@@ -1,9 +1,9 @@
 "use client"
 import Image from "next/image";
-import Form from "../components/form";
-import MainButton from "../components/UI/mainbutton";
-import { Images } from "../image";
-import { staff } from "../data";
+import Form from "../../components/form";
+import MainButton from "../../components/UI/mainbutton";
+import { Images } from "../../assets/image";
+import { staff } from "../../assets/data";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
@@ -11,18 +11,12 @@ import Link from "next/link";
 
 export default function About() {
     const [progressBar, setProgressBar] = useState(100);
-    const [card1Ref, card1inView, card1Entry] = useInView({
-        threshold: 0.8,
-    })
-    const [card2Ref, card2inView, card2Entry] = useInView({
-        threshold: 0.8
-    })
-    const [card3Ref, card3inView, card3Entry] = useInView({
-        threshold: 0.8
-    })
-    const [card4Ref, card4inView, card4Entry] = useInView({
-        threshold: 0.8
-    })
+
+    const [card1Ref, card1inView] = useInView({threshold: 0.8})
+    const [card2Ref, card2inView] = useInView({threshold: 0.8})
+    const [card3Ref, card3inView] = useInView({threshold: 0.8})
+    const [card4Ref, card4inView] = useInView({threshold: 0.8})
+
 
     function scrollHandler() {
         if (0 <= window.scrollY && window.scrollY <= 2000) {
@@ -42,6 +36,7 @@ export default function About() {
             nextImage.classList.remove('hidden');
         } 
     }
+
 
     useEffect(() => {
         scrollHandler();

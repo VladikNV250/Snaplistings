@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Images } from "../image";
+import { Images } from "./../assets/image";
 import Link from "next/link";
 import BrandSlider from "./UI/brandslider";
 

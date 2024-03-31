@@ -1,5 +1,5 @@
-import Form from "../components/form";
-import PressCards from "../components/presscards";
+import Form from "../../components/form";
+import PressCards from "../../components/presscards";
 
 export default function Press() {
     return (
