@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        'xl-up': '0 -1px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2);'
+      },
       fontSize: {
         '5.5xl': '3.625rem', 
         '7.5xl': '5.065rem',
@@ -19,8 +22,9 @@ const config: Config = {
         '38': '9.5rem',
         '50': '12.4rem',
         '58': '14.25rem',
-        '59': '14.5rem', // 64 65     66    67    68  69    70    71    72
-        '69': '17.25rem',// 16 16.25  16.5  16.75 17  17.25 17.5  17.75 18
+        '59': '14.5rem', 
+        '69': '17.25rem',
+        '88': '22rem',
         'full-w': '106%',
         'full-h': '120%',
       },
@@ -43,13 +47,9 @@ const config: Config = {
       backgroundImage: {
         'main-pattern': 'url("./../../public/bg.png")',
         'card-pattern': 'linear-gradient(135deg, rgba(245, 245, 245, 1) 20%, rgba(8, 60, 72, 0.2) 100%)',
-        'card-pattern-none': 'linear-gradient(135deg, rgba(245, 245, 245, 1) 20%, rgba(245, 245, 245, 1) 100%)'
+        'card-pattern-none': 'linear-gradient(135deg, rgba(245, 245, 245, 1) 20%, rgba(245, 245, 245, 1) 100%)',
       },
       keyframes: {
-        'slide-firstly': {
-          '0%': {transform: 'translateX(0)'},
-          '100%': {transform: 'translateX(-100%)'}, 
-        },
         'slide': {
           '0%': {transform: 'translateX(0)'},
           '100%': {transform: 'translateX(calc(-100% - 2536px))'}, 
@@ -60,9 +60,9 @@ const config: Config = {
         }
       },
       animation: {
-        'slide-firstly': 'slide-firstly 34s linear',
+        'slide-firstly': 'slide 68s linear -34s infinite',
         'slide': 'slide 68s linear infinite',
-        'slide-slower-firstly': 'slide-firstly 46s linear',
+        'slide-slower-firstly': 'slide-slower 92s linear -46s infinite',
         'slide-slower': 'slide-slower 92s linear infinite',
       }
     },

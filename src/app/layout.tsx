@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { OpenSauceSans } from "./font";
 import "./globals.css";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
+import { OpenSauceSans } from "../assets/font";
 
 export const metadata: Metadata = {
   title: "Snaplistings",
