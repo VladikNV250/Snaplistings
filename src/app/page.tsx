@@ -76,7 +76,7 @@ export default function Home() {
     scrollHandler(scrollHeight - browserHeight);
     window.addEventListener('scroll', () => scrollHandler(scrollHeight - browserHeight))
     return () => window.removeEventListener('scroll', () => scrollHandler(scrollHeight - browserHeight));
-  }, [])
+  })
 
   useEffect(() => {
     if (progress >= 0 && progress <= 18) {

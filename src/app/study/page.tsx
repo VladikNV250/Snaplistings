@@ -24,7 +24,7 @@ export default function Study() {
                 On Your Website
                 </h2>
                 <p className="text-base text-center text-white z-10">
-                    We'll do a free analysis on how your site isn't optimized for lead <br />
+                    We&apos;ll do a free analysis on how your site isn&apos;t optimized for lead <br />
                     generation and where to improve to get 30% more qualified leads.
                 </p>
                 <MainButton className="w-80 h-12 bg-transparent mt-14 z-10 border-frost-200" bgClassName="bg-frost-200">

@@ -5,8 +5,8 @@ import { pressCards } from "./../assets/data";
 const PressCards = () => {
     return (
         <div className="w-[1183px] grid grid-cols-2 auto-rows-[538px] grid-flow-row gap-4">
-            {pressCards.map(card => (
-            <div className="w-full h-full p-0.5 pb-3 bg-darkslategray-600 rounded-xl">
+            {pressCards.map((card, key) => (
+            <div key={key} className="w-full h-full p-0.5 pb-3 bg-darkslategray-600 rounded-xl">
                 <div className="w-full h-full bg-white p-7 rounded-[10px] flex flex-col justify-between">
                     <div className="space-y-8">
                         <div className="relative w-full h-[283px] flex items-center justify-center border-[0.5px] border-black rounded-xl overflow-hidden mb-8">

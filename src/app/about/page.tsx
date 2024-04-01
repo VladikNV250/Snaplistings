@@ -166,7 +166,7 @@ export default function About() {
                             card4inView && 'opacity-100 top-0',
                         )}>
                             <h4 className="text-3xl font-bold text-frost-200">2023</h4>
-                            <p className="text-xl text-frost-100">A year filled with accolades recognizing Snaplistings' unprecedented growth. We ranked in the top 1,000 on the 2023 Inc 5000 list, placing #32 in the Real Estate sector.</p>
+                            <p className="text-xl text-frost-100">A year filled with accolades recognizing Snaplistings&apos; unprecedented growth. We ranked in the top 1,000 on the 2023 Inc 5000 list, placing #32 in the Real Estate sector.</p>
                         </div>
                         <div className="relative w-[100px] min-h-full h-[440px] flex flex-col items-center justify-between bg-steelgray-500">
                             <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-full h-32 bg-steelgray-500 z-20">
@@ -243,8 +243,8 @@ export default function About() {
                 <h2 className="text-5.5xl text-center font-bold bg-gradient-to-t from-darkslategray-500 to-darkslategray-600 inline-block text-transparent bg-clip-text">Meet the All-Star Line Up</h2>
                 <p className="text-xl text-center text-stone-900">We love what we do, where we&apos;re going, and most <br /> importantly, the people we slay alongside.</p>
                 <section className="w-[1172px] grid grid-cols-3 auto-rows-[467px] gap-x-2.5 gap-y-7 mt-14">
-                    {staff.map(person => (
-                    <article className="w-full h-full p-0.5 pb-3 bg-darkslategray-600 rounded-xl">
+                    {staff.map((person, key) => (
+                    <article key={key} className="w-full h-full p-0.5 pb-3 bg-darkslategray-600 rounded-xl">
                         <div className="w-full h-full bg-white rounded-[10px] overflow-hidden">
                             <div className="relative w-[382px] h-[308px] bg-gray-300">
                                 <Image 

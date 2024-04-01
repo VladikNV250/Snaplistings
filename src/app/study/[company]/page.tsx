@@ -150,8 +150,8 @@ export default function CompanyPage({params}: { params: { company: string } }) {
                         <h4 className="text-3xl font-semibold text-darkslategray-600 mb-8">{Company.Problem.title}</h4>
                         <h5 className="text-xl font-medium text-stone-900 mb-6">Challenges</h5>
                         <ol className="text-xl text-stone-900 list-decimal list-inside mb-8">
-                            {Company.Problem.challenges.map(challange => (
-                                <li>{challange}</li>
+                            {Company.Problem.challenges.map((challange, key) => (
+                                <li key={key}>{challange}</li>
                             ))}
                         </ol>
                         <div className="relative w-full h-[562px] rounded-b-xl rounded-t-2xl border-b-2 border-black/20 overflow-hidden">
@@ -176,8 +176,8 @@ export default function CompanyPage({params}: { params: { company: string } }) {
                         </div>
                     </article>
                     <article id="results" ref={resultsRef} className={clsx('transition-opacity duration-300 space-y-8', !resultsInView && 'opacity-0', resultsInView && 'opacity-100')}>
-                        {Company.Results.map(result => (
-                            <div className="space-y-4">
+                        {Company.Results.map((result, key) => (
+                            <div key={key} className="space-y-4">
                                 <h4 className="text-3xl font-semibold text-darkslategray-600" dangerouslySetInnerHTML={{__html: result.title}}></h4>
                                 <p className="text-xl text-stone-900">{result.description}</p>
                             </div>
