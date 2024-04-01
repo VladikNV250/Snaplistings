@@ -51,18 +51,24 @@ import sophie from './../../public/staff/sophie.webp';
 
 
 import ori from "./../../public/brands/ori.webp";
+import oriBlack from "./../../public/brands/ori_black.png";
 import kentStreet from "./../../public/brands/30-kent-street.svg";
+import kentStreetBlack from "./../../public/brands/30-kent-street_black.webp";
 import broderSachse from "./../../public/brands/broder-sachse.webp";
 import continuum from "./../../public/brands/continuum.webp";
 import cretech from "./../../public/brands/cretech.webp";
 import horizons from "./../../public/brands/horizons.webp";
 import jmh from "./../../public/brands/jmh.webp";
 import labaia from "./../../public/brands/labaia.svg";
+import labaiaBlack from "./../../public/brands/labaia_black.webp";
 import sachse from "./../../public/brands/sachse.webp";
 import stonehenge from "./../../public/brands/stonehenge.webp";
+import stonehengeBlack from "./../../public/brands/stonehenge_black.webp";
 import ww from "./../../public/brands/wonder-works.webp";
 import treetop from "./../../public/brands/treetop.svg";
+import treetopBlack from "./../../public/brands/treetop_black.webp";
 import twocooper from "./../../public/brands/2cooper.svg";
+import twocooperBlack from "./../../public/brands/2cooper_black.svg";
 import WestView from "./../../public/brands/wv.svg";
 import haystackai from "./../../public/brands/haystacksai.svg";
 
@@ -81,6 +87,21 @@ import topWomenWhite from "./../../public/press/topwomen_white.png";
 import animatedCard1 from "./../../public/animated-card-1.png";
 import animatedCard2 from "./../../public/animated-card-2.png";
 import animatedCard3 from "./../../public/animated-card-3.png";
+
+import labaiaCard1 from "./../../public/companies/labaia_card1.webp";
+import labaiaCard2 from "./../../public/companies/labaia_card2.png";
+import twocooperCard1 from "./../../public/companies/2cooper_card1.webp";
+import twocooperCard2 from "./../../public/companies/2cooper_card2.webp";
+import kentStreetCard1 from "./../../public/companies/30-kent-street_card1.webp";
+import kentStreetCard2 from "./../../public/companies/30-kent-street_card2.jpeg";
+import oriCard1 from "./../../public/companies/ori_card1.webp";
+import oriCard2 from "./../../public/companies/ori_card2.jpeg";
+import oriLivingCard1 from "./../../public/companies/ori-living_card1.webp";
+import oriLivingCard2 from "./../../public/companies/ori-living_card2.webp";
+import stonehengeCard1 from "./../../public/companies/stonehenge_card1.png";
+import stonehengeCard2 from "./../../public/companies/stonehenge_card2.webp";
+import treetopCard1 from "./../../public/companies/treetop_card1.webp";
+import treetopCard2 from "./../../public/companies/treetop_card2.jpeg";
 
 
 export const Images = {
@@ -159,37 +180,80 @@ export const Images = {
         TOPWOMEN_WHITE: topWomenWhite.src,
     },
 
+    COMPANIES: {
+        LABAIA: {
+            CARD1: labaiaCard1.src,
+            CARD2: labaiaCard2.src,
+        },
+        TWOCOOPER: {
+            CARD1: twocooperCard1.src,
+            CARD2: twocooperCard2.src,
+        },
+        KENTSTREET: {
+            CARD1: kentStreetCard1.src,
+            CARD2: kentStreetCard2.src,
+        },
+        ORI: {
+            CARD1: oriCard1.src,
+            CARD2: oriCard2.src,
+        },
+        ORI_LIVING: {
+            CARD1: oriLivingCard1.src,
+            CARD2: oriLivingCard2.src,
+        },
+        STONEHENGE: {
+            CARD1: stonehengeCard1.src,
+            CARD2: stonehengeCard2.src,
+        },
+        TREETOP: {
+            CARD1: treetopCard1.src,
+            CARD2: treetopCard2.src,
+        },
+    },
+
     BRANDS: {
         BRANDSIZES: {
             ORI: {width: ori.width, height: ori.height},
+            ORI_BLACK: {width: oriBlack.width, height: oriBlack.height},
             KENT_STREET: {width: kentStreet.width, height: kentStreet.height},
+            KENT_STREET_BLACK: {width: kentStreetBlack.width, height: kentStreetBlack.height},
             BRODER_SACHSE: {width: broderSachse.width, height: broderSachse.height},
             CONTINUUM: {width: continuum.width, height: continuum.height},
             CRETECH: {width: cretech.width, height: cretech.height},
             HORIZONS: {width: horizons.width, height: horizons.height},
             JMH: {width: jmh.width, height: jmh.height},
             LABAIA: {width: labaia.width, height: labaia.height},
+            LABAIA_BLACK: {width: labaiaBlack.width, height: labaiaBlack.height},
             SACHSE: {width: sachse.width, height: sachse.height},
             STONEHENGE: {width: stonehenge.width, height: stonehenge.height},
+            STONEHENGE_BLACK: {width: stonehengeBlack.width, height: stonehengeBlack.height},
             WONDERWORKS: {width: ww.width, height: ww.height},
             TREETOP: {width: treetop.width, height: treetop.height},
+            TREETOP_BLACK: {width: treetopBlack.width, height: treetopBlack.height},
             TWOCOOPER: {width: twocooper.width, height: twocooper.height},
+            TWOCOOPER_BLACK: {width: twocooperBlack.width, height: twocooperBlack.height},
             WV: {width: WestView.width, height: WestView.height},
             HAYSTACKAI: {width: haystackai.width, height: haystackai.height},
         },
         ORI: ori.src,
+        ORI_BLACK: oriBlack.src,
         KENT_STREET: kentStreet.src,
+        KENT_STREET_BLACK: kentStreetBlack.src,
         BRODER_SACHSE: broderSachse.src,
         CONTINUUM: continuum.src,
         CRETECH: cretech.src,
         HORIZONS: horizons.src,
         JMH: jmh.src,
         LABAIA: labaia.src,
+        LABAIA_BLACK: labaiaBlack.src,
         SACHSE: sachse.src,
         STONEHENGE: stonehenge.src,
+        STONEHENGE_BLACK: stonehengeBlack.src,
         WONDERWORKS: ww.src,
         TREETOP: treetop.src,
+        TREETOP_BLACK: treetopBlack.src,
         TWOCOOPER: twocooper.src,
+        TWOCOOPER_BLACK: twocooperBlack.src,
         WV: WestView.src,
         HAYSTACKAI: haystackai.src,
     }

@@ -8,7 +8,7 @@ const Cards = ({length}: {length: number}) => {
         <div className="cards grid grid-cols-3 auto-rows-[384px] gap-4 px-48 mt-16">
             {CompanyCards.map((card, index) => {
                 if (index >= length) return null;
-                let href = card.available ? `/${card.brandImage.alt}` : '/';
+                let href = card.available ? `/${card.href}` : '/';
                 return (
                     <div key={index} className="group relative p-0.5 pb-3 bg-gradient-to-b from-darkslategray-600/60 to-darkslategray-600 rounded-xl cursor-pointer">
                         <Link href={`/study/${href}`}>
