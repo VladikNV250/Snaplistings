@@ -48,7 +48,7 @@ const Navbar = () => {
                 <Link href={'/press'} className="relative text-base text-darkslategray-600">Press</Link>
             </div>
             <MainButton className="w-40 h-11 bg-white border-darkslategray-600" bgClassName="bg-darkslategray-600">
-                <Link href="#form" className="text-white font-bold text-base whitespace-nowrap z-20 cursor-pointer">Get Connected</Link>                
+                <Link href="#formSection" className="text-white font-bold text-base whitespace-nowrap z-20 cursor-pointer">Get Connected</Link>                
             </MainButton>
         </nav>
     )

@@ -1,7 +1,9 @@
+"use client"
 import { pressCards } from "@/assets/data";
 import Form from "@/components/form";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function PressPage( {params}: { params: { press: string } } ) {
     const spaceRegEx = /%20/g;
@@ -13,10 +15,29 @@ export default function PressPage( {params}: { params: { press: string } } ) {
         href: '',
         description: '',
     };
-    console.log(press);
+
+    const [scrollProgress, setScrollProgress] = useState(0);
+
+    function scrollHandler(scrollHeight: number) {
+        const currentProgress = Math.round((window.scrollY * 100) / scrollHeight)
+        setScrollProgress(currentProgress);
+    }
+
+    useEffect(() => {
+        const scrollHeight = Math.max(
+            document.body.scrollHeight, document.documentElement.scrollHeight,
+            document.body.offsetHeight, document.documentElement.offsetHeight,
+            document.body.clientHeight, document.documentElement.clientHeight
+        );
+        const browserHeight = document.documentElement.clientHeight;
+        scrollHandler(scrollHeight - browserHeight);
+        window.addEventListener('scroll', () => scrollHandler(scrollHeight - browserHeight));
+        return () => window.removeEventListener('scroll', () => scrollHandler(scrollHeight - browserHeight));
+    }, [])
 
     return (
         <main className="w-full min-h-screen">
+            <div className={`line fixed h-0.5 top-0 left-1/2 transform -translate-x-1/2 bg-tango-500 shadow shadow-tango-500 z-40 transition-all duration-75`} style={{ width: `${scrollProgress}%` }}></div>
             <section className="relative w-full pt-32 pb-18 flex flex-col items-center bg-white shadow shadow-black/15 z-10">
                 <article className="w-[1180px]">
                     <Image 

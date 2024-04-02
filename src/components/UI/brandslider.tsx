@@ -11,7 +11,7 @@ const BrandSlider = ({ mode, id }: { mode?: 'brand' | 'snaplistings', id: string
         <>
             {
                 mode === 'brand' || mode === undefined ?
-                    <div id={id} className="absolute left-0 bottom-16 h-28 w-full">
+                    <div key={id} id={id} className="absolute left-0 bottom-16 h-28 w-full">
                         <div className={`animate-slide-firstly absolute left-[2536px] top-0 h-28 min-w-full w-[2536px] overflow-x-hidden flex items-center justify-end space-x-18 z-30`}>
                             {Brands.map((brand, index) => (
                                 <div 
@@ -52,7 +52,7 @@ const BrandSlider = ({ mode, id }: { mode?: 'brand' | 'snaplistings', id: string
             }
             {
                 mode === 'snaplistings' ?
-                    <div id={id} className="absolute top-1/4 left-0 w-full h-28">
+                    <div key={id} id={id} className="absolute top-1/4 left-0 w-full h-28">
                         <div className="animate-slide-slower-firstly absolute top-0 left-[3366px] h-28 min-w-full w-[3366px] overflow-x-hidden flex items-center space-x-18 z-10 pl-12">
                             {Array.from({ length: 4 }, (_, index): ReactNode => (
                                 <>

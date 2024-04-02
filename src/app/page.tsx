@@ -11,7 +11,6 @@ import { useInView } from "react-intersection-observer";
 import clsx from "clsx";
 import Link from "next/link";
 
-type Options = 'Discount' | 'Increase' | 'Simple Percentage' | 'Increase/Decrease' | 'Percentage of A from B';
 
 export default function Home() {
   const [cardsProgress, setCardsProgress] = useState(0);
@@ -25,25 +24,8 @@ export default function Home() {
   const [title3Ref, title3InView] = useInView({threshold: 0.35, triggerOnce: true})
   const [buttonRef, buttonInView] = useInView({threshold: 0.1})
 
-
-  function percentageCalculator(a: number, b: number, option: Options): number {
-    switch (option) {
-      case 'Discount': // a - b% = x
-        return a - Math.round((a * b) / 100);
-      case 'Increase': // a + b% = x
-        return a + Math.round((a * b) / 100);
-      case 'Simple Percentage': // a * b% = x
-        return Math.round((a * b) / 100);
-      case 'Increase/Decrease': // a -> b = x%
-        return Math.round((b * 100) / a);
-      case 'Percentage of A from B': // a <- b = x%
-        return Math.round((a * 100) / b);
-      default: return 0;
-    }
-  }
-
   function scrollHandler(scrollHeight: number) {
-    const currentProgress = percentageCalculator(window.scrollY, scrollHeight, 'Percentage of A from B')
+    const currentProgress = Math.round((window.scrollY * 100) / scrollHeight)
     setProgress(currentProgress);
   }
 
@@ -89,7 +71,7 @@ export default function Home() {
 
   return (
     <main className="relative flex flex-col items-center pt-32 bg-white">
-      <div className={`line fixed h-0.5 top-0 bg-tango-500 shadow shadow-tango-500 z-40 transition-all`} style={{ width: `${progress}%` }}></div>
+      <div className={`line fixed h-0.5 top-0 bg-tango-500 shadow shadow-tango-500 z-40 transition-all duration-75`} style={{ width: `${progress}%` }}></div>
       <section className="w-full h-full flex flex-col items-center bg-white">
         <Image
           ref={incRef}
@@ -135,7 +117,7 @@ export default function Home() {
           )}
           bgClassName="bg-darkslategray-600"
         >
-          <Link href="#form" ref={buttonRef} className="text-white font-bold text-xl whitespace-nowrap z-20 cursor-pointer">
+          <Link href="#formSection" ref={buttonRef} className="text-white font-bold text-xl whitespace-nowrap z-20 cursor-pointer">
             Get Connected
           </Link>
         </MainButton>

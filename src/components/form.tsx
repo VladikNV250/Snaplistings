@@ -9,7 +9,7 @@ const Form = () => {
     const [formRef, formInView] = useInView({threshold: 0.2, triggerOnce: true})
 
     return (
-        <section className="relative overflow-hidden w-full flex flex-col items-center pt-32 pb-64 bg-neutral-100" id="form">
+        <section className="relative overflow-hidden w-full flex flex-col items-center pt-32 pb-64 bg-neutral-100" id="formSection">
             <div className="background absolute w-full h-full top-0 left-0 z-10">
                 <div className="absolute w-full h-4 bg-black/15 top-0 left-0 blur-lg"></div>
                 <div className="absolute w-full h-4 bg-black/30 bottom-0 left-0  blur-lg"></div>
@@ -36,7 +36,7 @@ const Form = () => {
                 Hi! Let&apos;s solve your problem together
             </h2>
             <p className="text-xl text-stone-900 mt-4 z-20">Request a case study in your industry and chat with our team!</p>
-            <form action="" className="flex flex-col items-center z-10 mt-18 space-y-6 z-20">
+            <form id="form" action="" className="flex flex-col items-center z-10 mt-18 space-y-6 z-20">
                 <div className="w-full relative flex flex-col">
                     <h5 className="text-base text-darkslategray-600 font-medium">What is your industry?</h5>
                     <div className="flex justify-between items-center space-x-4 mt-1">

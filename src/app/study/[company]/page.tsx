@@ -5,6 +5,7 @@ import Form from "@/components/form";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 export default function CompanyPage({params}: { params: { company: string } }) {
@@ -38,10 +39,28 @@ export default function CompanyPage({params}: { params: { company: string } }) {
     const [problemRef, problemInView] = useInView({threshold: 0.375});
     const [solutionRef, solutionInView] = useInView({threshold: 0.4});
     const [resultsRef, resultsInView] = useInView({threshold: 0.775});
+    const [scrollProgress, setScrollProgress] = useState(0);
 
+    function scrollHandler(scrollHeight: number) {
+        const currentProgress = Math.round((window.scrollY * 100) / scrollHeight)
+        setScrollProgress(currentProgress);
+    }
+
+    useEffect(() => {
+        const scrollHeight = Math.max(
+            document.body.scrollHeight, document.documentElement.scrollHeight,
+            document.body.offsetHeight, document.documentElement.offsetHeight,
+            document.body.clientHeight, document.documentElement.clientHeight
+        );
+        const browserHeight = document.documentElement.clientHeight;
+        scrollHandler(scrollHeight - browserHeight);
+        window.addEventListener('scroll', () => scrollHandler(scrollHeight - browserHeight));
+        return () => window.removeEventListener('scroll', () => scrollHandler(scrollHeight - browserHeight));
+    }, [])
 
     return (
         <main className="min-w-screen w-full min-h-screen">
+            <div className={`line fixed h-0.5 top-0 left-1/2 transform -translate-x-1/2 bg-tango-500 shadow shadow-tango-500 z-40 transition-all duration-75`} style={{ width: `${scrollProgress}%` }}></div>
             <section className="w-full pt-28 pb-10 flex flex-col items-center bg-neutral-100">
                 <h2 
                     ref={titleRef} 

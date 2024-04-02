@@ -10,6 +10,7 @@ import clsx from "clsx";
 import Link from "next/link";
 
 export default function About() {
+    const [scrollProgress, setScrollProgress] = useState(0);
     const [progressBar, setProgressBar] = useState(100);
 
     const [card1Ref, card1inView] = useInView({threshold: 0.8})
@@ -18,7 +19,11 @@ export default function About() {
     const [card4Ref, card4inView] = useInView({threshold: 0.8})
 
 
-    function scrollHandler() {
+    function scrollHandler(scrollHeight: number) {
+        const currentProgress = Math.round((window.scrollY * 100) / scrollHeight)
+        setScrollProgress(currentProgress);
+
+
         if (0 <= window.scrollY && window.scrollY <= 2000) {
             const progress = +(100 - ((window.scrollY * 100) / 1952)).toFixed(6);
             if (progress <= 0) setProgressBar(0);
@@ -39,9 +44,15 @@ export default function About() {
 
 
     useEffect(() => {
-        scrollHandler();
-        window.addEventListener('scroll', scrollHandler);
-        return () => window.removeEventListener('scroll', scrollHandler);
+        const scrollHeight = Math.max(
+            document.body.scrollHeight, document.documentElement.scrollHeight,
+            document.body.offsetHeight, document.documentElement.offsetHeight,
+            document.body.clientHeight, document.documentElement.clientHeight
+        );
+        const browserHeight = document.documentElement.clientHeight;
+        scrollHandler(scrollHeight - browserHeight);
+        window.addEventListener('scroll', () => scrollHandler(scrollHeight - browserHeight));
+        return () => window.removeEventListener('scroll', () => scrollHandler(scrollHeight - browserHeight));
     }, [])
     useEffect(() => {
         const timeout = setInterval(switchImage, 800);
@@ -50,6 +61,7 @@ export default function About() {
 
     return (
         <main className="w-full min-h-screen">
+            <div className={`line fixed h-0.5 top-0 left-1/2 transform -translate-x-1/2 bg-tango-500 shadow shadow-tango-500 z-40 transition-all duration-75`} style={{ width: `${scrollProgress}%` }}></div>
             <section className="w-full bg-steelgray-500 pt-32 flex flex-col items-center">
                 <h2 className="relative text-5.5xl text-center font-bold text-frost-100">The Snaplistings Story</h2>
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-chevron-down text-frost-100 my-24" viewBox="0 0 16 16">
@@ -229,7 +241,7 @@ export default function About() {
                         part of our next evolution.
                     </h4>
                     <MainButton className="w-48 h-14 border-frost-200 z-10" bgClassName="bg-frost-200">
-                        <Link href="#form" className="text-darkslategray-600 font-bold text-xl whitespace-nowrap z-20 cursor-pointer">Get Connected</Link>
+                        <Link href="#formSection" className="text-darkslategray-600 font-bold text-xl whitespace-nowrap z-20 cursor-pointer">Get Connected</Link>
                     </MainButton>
                     <Image 
                         src={Images.BACKGROUND2}
