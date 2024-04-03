@@ -12,7 +12,7 @@ const BrandSlider = ({ mode, id }: { mode?: 'brand' | 'snaplistings', id: string
             {
                 mode === 'brand' || mode === undefined ?
                     <div key={id} id={id} className="absolute left-0 bottom-16 h-28 w-full">
-                        <div className={`animate-slide-firstly absolute left-[2536px] top-0 h-28 min-w-full w-[2536px] overflow-x-hidden flex items-center justify-end space-x-18 z-30`}>
+                        <div className={`xl:animate-slide-firstly absolute xl:left-[2536px] sm:left-0 top-0 h-28 min-w-full w-[2536px] overflow-x-hidden flex items-center xl:justify-end sm:justify-start space-x-18 z-30`}>
                             {Brands.map((brand, index) => (
                                 <div 
                                     key={index} 
@@ -24,12 +24,12 @@ const BrandSlider = ({ mode, id }: { mode?: 'brand' | 'snaplistings', id: string
                                         width={brand.width}
                                         height={brand.height}
                                         quality={100}
-                                        className={`h-[70px] w-max `}
+                                        className={`xl:h-[70px] lg:h-[55px] w-max `}
                                     />
                                 </div>
                             ))}
                         </div>
-                        <div className="animate-slide absolute left-[2536px] top-0 h-28 min-w-full w-[2536px] overflow-x-hidden flex items-center justify-end space-x-18 z-30 pl-12">
+                        <div className="xl:animate-slide sm:hidden xl:block absolute left-[2536px] top-0 h-28 min-w-full w-[2536px] overflow-x-hidden flex items-center justify-end space-x-18 z-30 pl-12">
                             {Brands.map((brand, index) => (
                                 <div 
                                     key={`${index}-second`} 
@@ -53,7 +53,7 @@ const BrandSlider = ({ mode, id }: { mode?: 'brand' | 'snaplistings', id: string
             {
                 mode === 'snaplistings' ?
                     <div key={id} id={id} className="absolute top-1/4 left-0 w-full h-28">
-                        <div className="animate-slide-slower-firstly absolute top-0 left-[3366px] h-28 min-w-full w-[3366px] overflow-x-hidden flex items-center space-x-18 z-10 pl-12">
+                        <div className="xl:flex sm:hidden animate-slide-slower-firstly absolute top-0 left-[3366px] h-28 min-w-full w-[3366px] overflow-x-hidden flex items-center space-x-18 z-10 pl-12">
                             {Array.from({ length: 4 }, (_, index): ReactNode => (
                                 <>
                                     <div key={index} className={`h-full w-max flex items-center`}>
@@ -69,7 +69,7 @@ const BrandSlider = ({ mode, id }: { mode?: 'brand' | 'snaplistings', id: string
                                 </>
                             ))}
                         </div>
-                        <div className="animate-slide-slower absolute top-0 left-[3366px] h-28 min-w-full w-[3366px] overflow-x-hidden flex items-center space-x-18 z-10 pl-12">
+                        <div className="xl:flex sm:hidden animate-slide-slower absolute top-0 left-[3366px] h-28 min-w-full w-[3366px] overflow-x-hidden flex items-center space-x-18 z-10 pl-12">
                             {Array.from({ length: 4 }, (_, index): ReactNode => (
                                 <>
                                     <div key={index} className={`h-full w-max flex items-center`}>

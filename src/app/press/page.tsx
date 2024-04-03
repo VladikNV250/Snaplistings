@@ -27,7 +27,7 @@ export default function Press() {
         <main className="w-full min-h-screen">
             <div className={`line fixed h-0.5 top-0 left-1/2 transform -translate-x-1/2 bg-tango-500 shadow shadow-tango-500 z-40 transition-all duration-75`} style={{ width: `${scrollProgress}%` }}></div>
             <section className="w-full flex flex-col items-center bg-white pt-32 pb-24 space-y-20">
-                <h2 className="relative text-5.5xl text-center font-bold mt-5 bg-gradient-to-b from-darkslategray-500 to-darkslategray-600 inline-block text-transparent bg-clip-text"> 
+                <h2 className="relative xl:text-5.5xl lg:text-4xl text-center font-bold mt-5 bg-gradient-to-b from-darkslategray-500 to-darkslategray-600 inline-block text-transparent bg-clip-text"> 
                     Our Latest Press Coverage
                 </h2>
                 <PressCards />

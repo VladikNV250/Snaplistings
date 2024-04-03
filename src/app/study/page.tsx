@@ -30,10 +30,10 @@ export default function Study() {
         <main className="w-full min-h-screen">
             <div className={`line fixed h-0.5 top-0 left-1/2 transform -translate-x-1/2 bg-tango-500 shadow shadow-tango-500 z-40 transition-all duration-75`} style={{ width: `${scrollProgress}%` }}></div>
             <section className="relative w-full flex flex-col items-center pt-32 pb-12 bg-white">
-                <h2 className="relative text-5.5xl text-center font-bold mt-5 bg-gradient-to-b from-darkslategray-500 to-darkslategray-600 inline-block text-transparent bg-clip-text transition-all duration-300">
+                <h2 className="relative xl:text-5.5xl lg:text-4xl text-center font-bold mt-5 bg-gradient-to-b from-darkslategray-500 to-darkslategray-600 inline-block text-transparent bg-clip-text transition-all duration-300">
                     Case Studies
                 </h2>
-                <p className="text-xl text-center mt-4 relative transition-all duration-700 delay-100">
+                <p className="xl:text-xl lg:text-base text-center mt-4 relative transition-all duration-700 delay-100">
                     We build and execute effective marketing & sales solutions that deliver real ROI.
                 </p>
             </section>
@@ -41,7 +41,7 @@ export default function Study() {
                 <Cards length={10}/>
             </section>
             <section className="relative w-full h-[487px] flex flex-col pt-20  items-center bg-steelgray-500">
-                <h2 className="text-5.5xl/tight text-center font-bold text-frost-200 z-10">
+                <h2 className="xl:text-5.5xl/tight lg:text-4xl/tight text-center font-bold text-frost-200 z-10">
                 Maximize Leads <br />
                 On Your Website
                 </h2>

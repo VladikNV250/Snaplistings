@@ -34,12 +34,13 @@ const Navbar = () => {
                 !visible && '-translate-y-18'
             )}
         >   
-            <Link href={'/'}>
+            <Link href={'/'} className="relative xl:h-[32px] xl:w-max lg:h-[26px]">
                 <Image
                     src={Images.SNAPLISTINGS}
                     width={235}
                     height={26}
-                    alt="SNAPLISTINGS" 
+                    alt="SNAPLISTINGS"
+                    className="h-full w-full" 
                 />
             </Link>
             <div className="links absolute left-1/2 transform -translate-x-1/2 h-full flex items-center space-x-12">

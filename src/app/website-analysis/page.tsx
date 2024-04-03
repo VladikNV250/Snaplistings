@@ -10,7 +10,7 @@ export default function Analysis() {
                     Are you getting as many leads on <br />
                     your website as you should be? 
                 </h4>
-                <p className="text-xl text-frost-100 text-center z-10">
+                <p className="xl:text-xl lg:text-base text-frost-100 text-center z-10">
                     We&apos;ll do a free analysis on how your site isn&apos;tb <br />
                     optimized for lead generation and where to improve to <br />
                     get 30% more qualified leads.

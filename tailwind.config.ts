@@ -8,10 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        '+md': '842px',
+      },
       boxShadow: {
         'xl-up': '0 -1px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2);'
       },
       fontSize: {
+        '1.5xl': '1.375rem',
+        '5.25xl': '3.25rem',
         '5.5xl': '3.625rem', 
         '7.5xl': '5.065rem',
       },
