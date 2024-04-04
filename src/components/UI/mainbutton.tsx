@@ -15,7 +15,7 @@ const MainButton = ({children, className, bgClassName, type = 'button', form}: P
             type={type}
             className={
                 `group relative flex justify-center items-center
-                border-[1px] rounded-full overflow-hidden ` + className }
+                border-[1px] rounded-full overflow-hidden ${className}`}
         >
             <div 
                 className={

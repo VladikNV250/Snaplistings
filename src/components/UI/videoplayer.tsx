@@ -17,7 +17,7 @@ const VideoPlayer = ({src, className}: Props) => {
                 ref={videoRef}
                 className={clsx(
                     className,
-                    `relative transition-all duration-500 delay-[600ms] `,
+                    `relative transition-all duration-500 lg:delay-[600ms]`,
                     !videoInView && 'opacity-0 top-5',
                     videoInView && 'opacity-100 top-0'
                 )} 

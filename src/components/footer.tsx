@@ -6,23 +6,23 @@ import BrandSlider from "./UI/brandslider";
 const Footer = () => {
     return (
         <footer className="w-full flex flex-col items-center">
-            <section className="relative w-full flex justify-between items-center px-4 py-4 bg-white">
-                <div className="">
+            <section className="relative w-full flex lg:flex-row sm:flex-col justify-between items-center px-4 lg:py-4 sm:pt-16 sm:pb-10 bg-white">
+                <div>
                     <Image
                         src={Images.SL}
                         width={51}
                         height={33}
                         alt="SL"
                     />
-                    <p className="text-base text-darkslategray-600 ml-2">290 Fifth Ave, FL 6 NYC 10001</p>
+                    <p className="sm:hidden lg:block text-base text-darkslategray-600 ml-2">290 Fifth Ave, FL 6 NYC 10001</p>
                 </div>
-                <div className="absolute left-1/2 tranform -translate-x-1/2 links h-full flex items-center space-x-14">
+                <div className="links lg:absolute lg:left-1/2 lg:tranform lg:-translate-x-1/2 h-full flex lg:flex-row sm:flex-col items-center lg:space-x-14 sm:space-y-4 sm:mt-12 sm:mb-8">
                     <Link href={'/'} className="relative text-base text-darkslategray-600">Home</Link>
                     <Link href={'/about'} className="relative text-base text-darkslategray-600">About</Link>
                     <Link href={'/study'} className="relative text-base text-darkslategray-600">Case Studies</Link>
                     <Link href={'/press'} className="relative text-base text-darkslategray-600">Press</Link>
                 </div>
-                <div className="flex justify-between items-center space-x-2">
+                <div className="flex justify-between items-center space-x-2 sm:mb-4">
                     <Link href={'https://www.linkedin.com/company/snaplistings'} target="_blank" className="relative text-base text-darkslategray-600">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-linkedin" viewBox="0 0 16 16">
                             <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
@@ -37,10 +37,11 @@ const Footer = () => {
                         </svg>
                     </Link>
                 </div>
+                <p className="sm:block lg:hidden text-base text-darkslategray-600">290 Fifth Ave, FL 6 NYC 10001</p>
             </section>
-            <section className="relative w-full h-[200px]">
+            <section className="relative w-full lg:h-[200px] md:h-[105px] overflow-y-hidden">
                 <BrandSlider id="brand-slider-footer" mode="snaplistings" />
-                <div className="background absolute top-0 left-0 w-full h-[200px]">
+                <div className="background absolute top-0 left-0 w-full md:h-[200px] md:h-full">
                     <Image
                         src={Images.BACKGROUND3}
                         fill={true}

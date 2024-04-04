@@ -24,7 +24,7 @@ const BrandSlider = ({ mode, id }: { mode?: 'brand' | 'snaplistings', id: string
                                         width={brand.width}
                                         height={brand.height}
                                         quality={100}
-                                        className={`xl:h-[70px] lg:h-[55px] w-max `}
+                                        className={`xl:h-[70px] lg:h-[55px] md:h-[30px] w-max `}
                                     />
                                 </div>
                             ))}
