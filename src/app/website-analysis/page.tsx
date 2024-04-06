@@ -10,12 +10,12 @@ export default function Analysis() {
                     Are you getting as many leads on <br />
                     your website as you should be? 
                 </h4>
-                <p className="text-xl text-frost-100 text-center z-10">
+                <p className="xl:text-xl lg:text-base text-sm text-frost-100 text-center z-10">
                     We&apos;ll do a free analysis on how your site isn&apos;tb <br />
                     optimized for lead generation and where to improve to <br />
                     get 30% more qualified leads.
                 </p>
-                <form className="z-10 w-96 flex flex-col items-center mt-16" action="">
+                <form className="z-10 sm:w-96 w-full flex flex-col items-center mt-16 px-4 sm:px-0" action="">
                     <div className="flex flex-col w-full space-y-1 mb-6">
                         <label htmlFor="url" className="text-base text-frost-200 font-medium">Website URL*</label>
                         <input 

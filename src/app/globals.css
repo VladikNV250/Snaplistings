@@ -2,14 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    scroll-behavior: smooth;
-}
-
+html { scroll-behavior: smooth; }
 body {
     overflow-x: hidden;
+    background-color: grey;
 }
 
+input[type="number"] { -moz-appearance: textfield; }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@media (max-width: 831px) { .navmodal > .links > *::after { background: #EDF4D9; } }
+.links > *:hover::after { width: 100%; opacity: 1;}
 .links > *::after {
     content: "";
     position: absolute;
@@ -24,58 +31,10 @@ body {
     transition-duration: 500ms;
 }
 
-.links > *:hover::after { width: 100%; opacity: 1;}
-
-.triangle-1 {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 2px solid transparent;
-    border-top: 6px solid #fff;
-    background: transparent;
-    top: 2px;
-    left: 115px;
-    transform: rotate(-15deg);
-}
-
-.triangle-2 {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 2px solid transparent;
-    border-top: 6px solid #fff;
-    background: transparent;
-    bottom: 1px;
-    left: 30px;
-    transform: rotate(215deg);
-}
-
-.center {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-body { background-color: grey; }
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
-.main_btn {
-    clip-path: polygon(83% 0, 85% 10%, 85% 0, 100% 0, 100% 100%, 15% 100%, 15% 90%, 13% 100%, 0 100%, 0 0);
-}
-
+.clip-btn { clip-path: polygon(83% 0, 85% 10%, 85% 0, 100% 0, 100% 100%, 15% 100%, 15% 90%, 13% 100%, 0 100%, 0 0); }
 .clip-triangle { clip-path: polygon(0 0, 0% 100%, 100% 0); }
 
-#scrollbar-1 {
-    transform: translateZ(0);
+@layer components {
+    .gradient-t { @apply bg-gradient-to-t from-darkslategray-500 to-darkslategray-600 inline-block text-transparent bg-clip-text }
+    .gradient-b { @apply bg-gradient-to-b from-darkslategray-500 to-darkslategray-600 inline-block text-transparent bg-clip-text }
 }
