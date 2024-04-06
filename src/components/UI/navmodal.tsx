@@ -5,7 +5,7 @@ import MainButton from "./mainbutton";
 const NavModal = ({active, setActive}: {active: boolean, setActive: Function}) => {
     return (
         <div className={clsx(
-            'fixed flex flex-col items-center space-y-16 w-full bg-darkslategray-600 z-40 transition-all',
+            'navmodal fixed flex flex-col items-center space-y-16 w-full bg-darkslategray-600 z-40 transition-all',
             active && 'h-full',
             !active && 'h-0',
         )}>

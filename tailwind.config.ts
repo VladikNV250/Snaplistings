@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       screens: {
         'lg': '832px',
-        'mobile': {min: '640px', max: '831px'} // special for video element
+        'mobile': {max: '831px'}, // special for video element
       },
       boxShadow: {
         'xl-up': '0 -1px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2);'

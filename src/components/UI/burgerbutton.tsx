@@ -17,7 +17,7 @@ const BurgerButton = ({className, active, setActive}: Props) => {
     }
 
     return (
-        <button className={`lg:hidden sm:flex sm:flex-col sm:justify-between sm:items-center ${className}`} onClick={changeState}>
+        <button className={`lg:hidden flex flex-col justify-between items-center ${className}`} onClick={changeState}>
             <div className={clsx(
                 "w-full h-0.5 transition-all duration-300 delay-70", 
                 active && 'bg-frost-200 origin-right -rotate-45', 
