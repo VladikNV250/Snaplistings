@@ -11,8 +11,8 @@ const BrandSlider = ({ mode, id }: { mode?: 'brand' | 'snaplistings', id: string
         <>
             {
                 mode === 'brand' || mode === undefined ?
-                    <div key={id} id={id} className="absolute left-0 bottom-16 h-28 w-full">
-                        <div className={`xl:animate-slide-firstly absolute left-0 top-0 h-28 min-w-full w-[2536px] overflow-hidden flex items-center justify-start space-x-18 z-30 xl:justify-end xl:left-[2536px]`}>
+                    <div key={id} id={id} className="absolute left-0 bottom-16 h-28 w-full overflow-hidden">
+                        <div className={`xl:animate-slide-firstly absolute left-0 top-0 h-28 min-w-full w-[2536px] flex items-center justify-start space-x-18 z-30 xl:justify-end xl:left-[2536px]`}>
                             {Brands.map((brand, index) => (
                                 <div 
                                     key={index} 
